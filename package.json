@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -18,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/MARQUEZ93/plan-my-hikes/issues"
   },
-  "homepage": "https://github.com/MARQUEZ93/plan-my-hikes#readme"
+  "homepage": "https://github.com/MARQUEZ93/plan-my-hikes#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
