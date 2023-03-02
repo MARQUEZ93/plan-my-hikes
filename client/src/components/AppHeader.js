@@ -17,6 +17,7 @@ import {
 } from 'semantic-ui-react';
 import logo from '../images/bigger.svg';
 import Footer from './Footer';
+import SearchHikes from './SearchHikes';
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -37,6 +38,7 @@ const HomepageHeading = ({ mobile }) => (
       content='Plan my hike!'
       inverted
       style={{
+        color: '#1b1c1d',
         fontSize: mobile ? '2em' : '4em',
         fontWeight: 'normal',
         marginBottom: 0,
@@ -48,15 +50,13 @@ const HomepageHeading = ({ mobile }) => (
       content='Get your hiking itinerary'
       inverted
       style={{
+        color: '#1b1c1d',
         fontSize: mobile ? '1.5em' : '1.7em',
         fontWeight: 'normal',
         marginTop: mobile ? '0.5em' : '1em',
       }}
     />
-    <Button primary size='huge'>
-      Get Started
-      <Icon name='right arrow' />
-    </Button>
+    <SearchHikes/>
   </Container>
 )
 
@@ -140,7 +140,7 @@ class MobileContainer extends Component {
             </Menu.Item>
             </Menu>
           </Container>
-          <HomepageHeading mobile />
+        <HomepageHeading mobile />
         </Segment>
         {children}
       </Media>
