@@ -6,7 +6,7 @@ import {
     Segment,
   } from 'semantic-ui-react';
 
-const Footer = () => (
+const Footer = ({mobile}) => (
 <Segment inverted vertical style={{ padding: '5em 0em' }}>
       <Container>
         <Grid divided inverted stackable>
@@ -17,7 +17,7 @@ const Footer = () => (
               </Header>
               <List link inverted>
                 <List.Item as='a'>Contact</List.Item>
-                <List.Item as='a'>Open Source Repository</List.Item>
+                <List.Item as='a'>Github</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={6}>
