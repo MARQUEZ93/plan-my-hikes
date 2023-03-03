@@ -13,7 +13,7 @@ const Footer = ({mobile}) => (
           <Grid.Row>
             <Grid.Column width={3}>
             <Header as='h4' inverted>
-                Plan My Hikes
+                Plan My Hikes - Powered by ChatGPT
               </Header>
               <List link inverted>
                 <List.Item as='a' 
