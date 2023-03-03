@@ -11,7 +11,7 @@ const Footer = ({mobile}) => (
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>
-            <Grid.Column width={3}>
+            <Grid.Column width={7}>
             <Header as='h4' inverted>
                 Plan My Hikes - Powered by ChatGPT
               </Header>
@@ -24,7 +24,7 @@ const Footer = ({mobile}) => (
                     Github</List.Item>
               </List>
             </Grid.Column>
-            <Grid.Column width={6}>
+            <Grid.Column width={7}>
               <Header inverted as='h4' 
               content='Created by Alejandro E. Marquez' />
               <List link inverted>
