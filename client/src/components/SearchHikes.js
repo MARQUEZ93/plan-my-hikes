@@ -1,13 +1,10 @@
 import _ from 'lodash'
 import React from 'react'
-import { Search, Grid, Header, Segment } from 'semantic-ui-react'
+import { Search, Grid } from 'semantic-ui-react'
 
 const source = _.times(3, () => ({
-  title: 'Title',
-  description: 'Description',
-//   image: faker.internet.avatar(),
-  price: '$2.00',
-}))
+  name: 'Joshua Tree National Park'
+}));
 
 const initialState = {
   loading: false,
@@ -31,7 +28,7 @@ function exampleReducer(state, action) {
   }
 }
 
-function SearchHikes() {
+function SearchHikes({mobile}) {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
   const { loading, results, value } = state
 
@@ -47,7 +44,7 @@ function SearchHikes() {
       }
 
       const re = new RegExp(_.escapeRegExp(data.value), 'i')
-      const isMatch = (result) => re.test(result.title)
+      const isMatch = (result) => re.test(result.name)
 
       dispatch({
         type: 'FINISH_SEARCH',
@@ -63,16 +60,17 @@ function SearchHikes() {
 
   return (
     <Grid textAlign='center'>
-      <Grid.Column width={6}>
+      <Grid.Column>
         <Search
           loading={loading}
           placeholder='Search...'
           onResultSelect={(e, data) =>
-            dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
+            dispatch({ type: 'UPDATE_SELECTION', selection: data.result.name })
           }
           onSearchChange={handleSearchChange}
           results={results}
           value={value}
+          size='massive'
         />
       </Grid.Column>
     </Grid>
