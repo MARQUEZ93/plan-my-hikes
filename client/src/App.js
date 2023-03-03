@@ -1,10 +1,10 @@
 import 'semantic-ui-css/semantic.min.css';
-import AppHeader from './components/AppHeader';
+import Homepage from './components/Homepage';
 
 function App() {
   return (
     <div>
-      <AppHeader />
+      <Homepage/>
     </div>
   );
 };

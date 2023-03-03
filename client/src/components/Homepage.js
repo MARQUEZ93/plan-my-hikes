@@ -18,6 +18,7 @@ import {
 import logo from '../images/bigger.svg';
 import Footer from './Footer';
 import SearchHikes from './SearchHikes';
+import RandomPark from './RandomPark'
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -35,28 +36,18 @@ const HomepageHeading = ({ mobile }) => (
   <Container text>
     <Header
       as='h1'
-      content='Plan my hike!'
+      content='Get your hiking itinerary!'
       inverted
       style={{
         color: '#1b1c1d',
-        fontSize: mobile ? '2em' : '4em',
+        fontSize: mobile ? '1.5em' : '3em',
         fontWeight: 'normal',
-        marginBottom: 0,
-        marginTop: mobile ? '1.5em' : '1.5em',
+        // marginBottom: mobile ?  '0.25em' : '.5em',
+        marginTop: mobile ? '0.75em' : '1.5em',
       }}
     />
-    <Header
-      as='h2'
-      content='Get your hiking itinerary'
-      inverted
-      style={{
-        color: '#1b1c1d',
-        fontSize: mobile ? '1.5em' : '1.7em',
-        fontWeight: 'normal',
-        marginTop: mobile ? '0.5em' : '1em',
-      }}
-    />
-    <SearchHikes/>
+    <SearchHikes mobile/>
+    <RandomPark mobile />
   </Container>
 )
 
@@ -92,7 +83,6 @@ class DesktopContainer extends Component {
               pointing={!fixed}
               secondary={!fixed}
               size='large'
-              
             >
               <Container>
                 <Menu.Item as='a'>
@@ -100,8 +90,8 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 <Menu.Item position='right'>
                     <Item as='a'>Home</Item>
-                    <Item as='a'>About</Item>
-                    <Item as='a'>Contact</Item>
+                    <Item as='a' target="_blank" href="https://github.com/MARQUEZ93/plan-my-hikes">About</Item>
+                    <Item as='a' href="mailto:planmyhikes@gmail.com">Contact</Item>
                 </Menu.Item>
               </Container>
             </Menu>
@@ -167,10 +157,10 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
 
-const AppHeader = () => (
+const Homepage = () => (
   <ResponsiveContainer style={{backgroundColor: '#F0F0F0'}}>
-    <Footer />
+    <Footer mobile/>
   </ResponsiveContainer>
 );
 
-export default AppHeader;
+export default Homepage;
