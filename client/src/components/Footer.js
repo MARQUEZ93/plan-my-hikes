@@ -16,16 +16,24 @@ const Footer = ({mobile}) => (
                 Plan My Hikes
               </Header>
               <List link inverted>
-                <List.Item as='a'>Contact</List.Item>
-                <List.Item as='a'>Github</List.Item>
+                <List.Item as='a' 
+                  href="mailto:planmyhikes@gmail.com">Contact</List.Item>
+                <List.Item as='a' 
+                  target="_blank"
+                  href="https://github.com/MARQUEZ93/plan-my-hikes">
+                    Github</List.Item>
               </List>
             </Grid.Column>
             <Grid.Column width={6}>
               <Header inverted as='h4' 
               content='Created by Alejandro E. Marquez' />
               <List link inverted>
-                <List.Item as='a'>LinkedIn</List.Item>
-                <List.Item as='a'>Portfolio</List.Item>
+                <List.Item href="https://www.linkedin.com/in/dromarquez/" 
+                  target="_blank"
+                  as='a'>LinkedIn</List.Item>
+                <List.Item href="https://www.dromarquez.com/projects"
+                  target="_blank"
+                  as='a'>Portfolio</List.Item>
               </List>
             </Grid.Column>
           </Grid.Row>
