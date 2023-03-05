@@ -74,7 +74,7 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em', backgroundColor: '#F0F0F0'}}
+            style={{ minHeight: 600, padding: '1em 0em', backgroundColor: '#F0F0F0'}}
             vertical
           >
             <Menu
@@ -89,9 +89,9 @@ class DesktopContainer extends Component {
                   <Image size='small' src={logo} />
                 </Menu.Item>
                 <Menu.Item position='right'>
-                    <Item as='a'>Home</Item>
-                    <Item as='a' target="_blank" href="https://github.com/MARQUEZ93/plan-my-hikes">About</Item>
-                    <Item as='a' href="mailto:planmyhikes@gmail.com">Contact</Item>
+                    <Menu.Item active as='a'>Home</Menu.Item >
+                    <Menu.Item  as='a' target="_blank" href="https://github.com/MARQUEZ93/plan-my-hikes">About</Menu.Item >
+                    <Menu.Item  as='a' href="mailto:planmyhikes@gmail.com">Contact</Menu.Item >
                 </Menu.Item>
               </Container>
             </Menu>
