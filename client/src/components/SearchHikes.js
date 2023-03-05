@@ -1,10 +1,18 @@
-import _ from 'lodash'
-import React from 'react'
-import { Search, Grid } from 'semantic-ui-react'
+import _ from 'lodash';
+import React from 'react';
+import { Search, Grid, Header, Segment } from 'semantic-ui-react';
 
-const source = _.times(3, () => ({
-  name: 'Joshua Tree National Park'
-}));
+const source = [
+  {
+    title: 'Big Bend National Park (Texas, USA)'
+  },
+  {
+    title: 'Joshua Tree National Park (California, USA)'
+  },
+  {
+    title: 'Los Glaciares National Park (Argentina)'
+  },
+];
 
 const initialState = {
   loading: false,
@@ -24,11 +32,11 @@ function exampleReducer(state, action) {
       return { ...state, value: action.selection };
 
     default:
-      throw new Error();
+      throw new Error()
   }
 }
 
-function SearchHikes({mobile}) {
+function SearchHikes() {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
   const { loading, results, value } = state
 
@@ -44,7 +52,7 @@ function SearchHikes({mobile}) {
       }
 
       const re = new RegExp(_.escapeRegExp(data.value), 'i')
-      const isMatch = (result) => re.test(result.name)
+      const isMatch = (result) => re.test(result.title)
 
       dispatch({
         type: 'FINISH_SEARCH',
@@ -65,7 +73,7 @@ function SearchHikes({mobile}) {
           loading={loading}
           placeholder='Search...'
           onResultSelect={(e, data) =>
-            dispatch({ type: 'UPDATE_SELECTION', selection: data.result.name })
+            dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title})
           }
           onSearchChange={handleSearchChange}
           results={results}
