@@ -1,0 +1,29 @@
+[{
+  "big_bend_national_park": {
+    "name": "Big Bend National Park",
+    "location": "Texas, USA",
+    "hidden_gem": "This is hidden gem!",
+    "best": "This is best!",
+    "schedule": "This is schedule",
+    "best camping": "This is best camping",
+    "unique": "This is unique"
+  },
+  "joshua_tree_national_park": {
+    "name": "Joshua Tree National Park",
+    "location": "California, USA",
+    "hidden_gem": "This is hidden gem!",
+    "best": "This is best!",
+    "schedule": "This is schedule",
+    "best camping": "This is best camping",
+    "unique": "This is unique"
+  },
+  "los_glaciares_national_park": {
+    "name": "Los Glaciares National Park",
+    "location": "Argentina",
+    "hidden_gem": "This is hidden gem!",
+    "best": "This is best!",
+    "schedule": "This is schedule",
+    "best camping": "This is best camping",
+    "unique": "This is unique"
+  }
+}]
