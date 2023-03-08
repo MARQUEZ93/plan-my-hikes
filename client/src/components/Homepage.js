@@ -5,6 +5,7 @@ import { createMedia } from '@artsy/fresnel';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { InView } from 'react-intersection-observer';
+import { Link } from "react-router-dom";
 import {
   Button,
   Container,
@@ -21,6 +22,7 @@ import SearchHikes from './SearchHikes';
 import RandomPark from './RandomPark';
 import MainMenu from './MainMenu';
 import HomepageHeading from './HomepageHeading';
+import NoMatch from './NoMatch';
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -40,7 +42,7 @@ class DesktopContainer extends Component {
   toggleFixedMenu = (inView) => this.setState({ fixed: !inView })
 
   render() {
-    const { children } = this.props;
+    const { children, splash, notFound } = this.props;
     const { fixed } = this.state;
 
     return (
@@ -53,7 +55,11 @@ class DesktopContainer extends Component {
             vertical
           >
             <MainMenu fixed={fixed} />
-            <HomepageHeading />
+            {splash ? <HomepageHeading /> : null}
+            {notFound ? (<div><h2>Nothing to see here!</h2>
+                <p>
+                  <Link to="/">Go to the home page</Link>
+                </p></div>) : null }
           </Segment>
         </InView>
 
@@ -71,7 +77,7 @@ class MobileContainer extends Component {
   state = {};
 
   render() {
-    const { children } = this.props
+    const { children, splash, notFound } = this.props
 
     return (
       <Media at='mobile'>
@@ -84,7 +90,11 @@ class MobileContainer extends Component {
           <Container>
             <MainMenu mobile={true} />
           </Container>
-        <HomepageHeading mobile={true} />
+          {splash ? <HomepageHeading mobile={true} /> : null}
+            {notFound ? (<div><h2>Nothing to see here!</h2>
+                <p>
+                  <Link to="/">Go to the home page</Link>
+                </p></div>) : null }
         </Segment>
         {children}
       </Media>
@@ -96,14 +106,14 @@ MobileContainer.propTypes = {
   children: PropTypes.node,
 };
 
-const ResponsiveContainer = ({ children }) => (
+const ResponsiveContainer = ({ children, notFound, splash }) => (
   /* Heads up!
    * For large applications it may not be best option to put all page into these containers at
    * they will be rendered twice for SSR.
    */
   <MediaContextProvider>
-    <DesktopContainer>{children}</DesktopContainer>
-    <MobileContainer>{children}</MobileContainer>
+    <DesktopContainer splash={splash} notFound={notFound}>{children}</DesktopContainer>
+    <MobileContainer splash={splash} notFound={notFound}>{children}</MobileContainer>
   </MediaContextProvider>
 )
 
@@ -111,8 +121,8 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
 
-const Homepage = () => (
-  <ResponsiveContainer>
+const Homepage = ({splash=true, notFound=false}) => (
+  <ResponsiveContainer splash={splash} notFound={notFound}>
     <Footer/>
   </ResponsiveContainer>
 );
