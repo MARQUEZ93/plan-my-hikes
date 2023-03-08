@@ -158,7 +158,7 @@ ResponsiveContainer.propTypes = {
 }
 
 const Homepage = () => (
-  <ResponsiveContainer style={{backgroundColor: '#F0F0F0'}}>
+  <ResponsiveContainer>
     <Footer mobile/>
   </ResponsiveContainer>
 );
