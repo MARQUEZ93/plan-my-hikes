@@ -18,7 +18,9 @@ import {
 import logo from '../images/bigger.svg';
 import Footer from './Footer';
 import SearchHikes from './SearchHikes';
-import RandomPark from './RandomPark'
+import RandomPark from './RandomPark';
+import MainMenu from './MainMenu';
+import HomepageHeading from './HomepageHeading';
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -27,33 +29,6 @@ const { MediaContextProvider, Media } = createMedia({
     computer: 1024,
   },
 });
-
-/* Heads up!
- * HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled
- * components for such things.
- */
-const HomepageHeading = ({ mobile }) => (
-  <Container text>
-    <Header
-      as='h1'
-      content='Get your hiking itinerary!'
-      inverted
-      style={{
-        color: '#1b1c1d',
-        fontSize: mobile ? '1.5em' : '3em',
-        fontWeight: 'normal',
-        // marginBottom: mobile ?  '0.25em' : '.5em',
-        marginTop: mobile ? '0.75em' : '1.5em',
-      }}
-    />
-    <SearchHikes mobile/>
-    <RandomPark mobile />
-  </Container>
-)
-
-HomepageHeading.propTypes = {
-  mobile: PropTypes.bool,
-}
 
 /* Heads up!
  * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
@@ -77,24 +52,7 @@ class DesktopContainer extends Component {
             style={{ minHeight: 600, padding: '1em 0em', backgroundColor: '#F0F0F0'}}
             vertical
           >
-            <Menu
-              fixed={fixed ? 'top' : null}
-              // inverted={!fixed}
-              pointing={!fixed}
-              secondary={!fixed}
-              size='large'
-            >
-              <Container>
-                <Menu.Item as='a'>
-                  <Image size='small' src={logo} />
-                </Menu.Item>
-                <Menu.Item position='right'>
-                    <Menu.Item active as='a'>Home</Menu.Item >
-                    <Menu.Item  as='a' target="_blank" href="https://github.com/MARQUEZ93/plan-my-hikes">About</Menu.Item >
-                    <Menu.Item  as='a' href="mailto:planmyhikes@gmail.com">Contact</Menu.Item >
-                </Menu.Item>
-              </Container>
-            </Menu>
+            <MainMenu fixed={fixed} />
             <HomepageHeading />
           </Segment>
         </InView>
@@ -124,13 +82,9 @@ class MobileContainer extends Component {
           vertical
         >
           <Container>
-            <Menu pointing secondary size='large'>
-            <Menu.Item as='a' style={{margin:'auto'}}>
-              <Image size='small' src={logo} />
-            </Menu.Item>
-            </Menu>
+            <MainMenu mobile={true} />
           </Container>
-        <HomepageHeading mobile />
+        <HomepageHeading mobile={true} />
         </Segment>
         {children}
       </Media>
@@ -159,7 +113,7 @@ ResponsiveContainer.propTypes = {
 
 const Homepage = () => (
   <ResponsiveContainer>
-    <Footer mobile/>
+    <Footer/>
   </ResponsiveContainer>
 );
 
