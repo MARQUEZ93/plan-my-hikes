@@ -46,7 +46,7 @@ function exampleReducer(state, action) {
   }
 }
 
-function SearchHikes() {
+function SearchHikes({mobile = false, size = 'massive'}) {
   const [state, dispatch] = React.useReducer(exampleReducer, initialState)
   const { loading, results, value } = state
 
@@ -86,14 +86,14 @@ function SearchHikes() {
       <Grid.Column>
         <Search
           loading={loading}
-          placeholder='Search...'
+          placeholder='Find a National Park...'
           onResultSelect={(e, data) => {
             dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title, name: data.result.name})
           }}
           onSearchChange={handleSearchChange}
           results={results}
           value={value}
-          size='massive'
+          size={size}
         />
       </Grid.Column>
     </Grid>

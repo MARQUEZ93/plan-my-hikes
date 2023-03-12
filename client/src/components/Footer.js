@@ -17,7 +17,7 @@ const Footer = () => (
               </Header>
               <List link inverted>
                 <List.Item as='a' 
-                  href="mailto:planmyhikes@gmail.com">planmyhikes@gmail.com</List.Item>
+                  href="mailto:planmyhikes@gmail.com">PlanMyHikes@gmail.com</List.Item>
                 <List.Item as='a' 
                   target="_blank"
                   href="https://github.com/MARQUEZ93/plan-my-hikes">

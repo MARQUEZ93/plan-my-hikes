@@ -1,12 +1,24 @@
 import { Link } from "react-router-dom";
-function NoMatch() {
-    return (
-      <>
-        <h2>Nothing to see here!</h2>
-        <p>
-          <Link to="/">Go to the home page</Link>
-        </p>
-      </>
-    );
+import {
+  Container,
+  Header,
+  Button,
+  Icon
+} from 'semantic-ui-react';
+
+import SearchHikes from './SearchHikes';
+
+function NoMatch({mobile = false}) {
+    return ( <Container text style={{backgroundColor: 
+      '#F0F0F0', paddingBottom: '9em', textAlign:'center'}}>
+        <SearchHikes size='large' />
+        <Link to="/"><Button
+              style={{marginTop: mobile ? '1em': '2em', 
+              marginBottom: mobile ? '1em' : '2em',
+                  fontFamily: 'Quicksand'}} primary size='large'>
+              Nothing to see here!
+              <Icon corner='right' name='home'/>
+          </Button></Link>
+    </Container>);
 };
 export default NoMatch;
