@@ -13,11 +13,11 @@ const Footer = () => (
           <Grid.Row>
             <Grid.Column width={7}>
             <Header as='h4' inverted>
-                Plan My Hikes - Powered by ChatGPT
+                Plan My Hikes - Powered by <a target="_blank" href="https://platform.openai.com/overview">ChatGPT</a>
               </Header>
               <List link inverted>
                 <List.Item as='a' 
-                  href="mailto:planmyhikes@gmail.com">Contact: planmyhikes@gmail.com</List.Item>
+                  href="mailto:planmyhikes@gmail.com">planmyhikes@gmail.com</List.Item>
                 <List.Item as='a' 
                   target="_blank"
                   href="https://github.com/MARQUEZ93/plan-my-hikes">

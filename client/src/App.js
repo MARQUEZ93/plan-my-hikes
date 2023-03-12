@@ -1,6 +1,5 @@
 import 'semantic-ui-css/semantic.min.css';
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Homepage from './components/Homepage';
 import NoMatch from './components/NoMatch';
 import Park from './components/Park';
 import SiteHeader from './components/SiteHeader';
