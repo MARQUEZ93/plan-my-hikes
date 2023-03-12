@@ -11,7 +11,9 @@ import {
 
 const RandomPark = ({mobile}) => (
     <Button
-        style={{marginTop: mobile ? '1.5em': '3em', fontFamily: 'Quicksand'}} primary size='large'>
+        style={{marginTop: mobile ? '1em': '2em', 
+        marginBottom: mobile ? '1em' : '2em',
+            fontFamily: 'Quicksand'}} primary size='large'>
         Choose a National Park for me  
         <Icon corner='right' name='find'/>
     </Button>

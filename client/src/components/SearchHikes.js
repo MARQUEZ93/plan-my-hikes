@@ -79,8 +79,6 @@ function SearchHikes() {
   }, []);
 
   if (state.submit){
-    console.log(state);
-    console.log(snakeCase(state.name));
     return <Navigate to={`/parks/${snakeCase(state.name.toLowerCase())}`} />;
   }
   return (

@@ -7,7 +7,7 @@ import {
   } from 'semantic-ui-react';
 
 const Footer = () => (
-<Segment inverted vertical style={{ padding: '6em 0em' }}>
+<Segment inverted vertical style={{ padding: '5em 0em' }}>
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>
@@ -17,7 +17,7 @@ const Footer = () => (
               </Header>
               <List link inverted>
                 <List.Item as='a' 
-                  href="mailto:planmyhikes@gmail.com">Contact</List.Item>
+                  href="mailto:planmyhikes@gmail.com">Contact: planmyhikes@gmail.com</List.Item>
                 <List.Item as='a' 
                   target="_blank"
                   href="https://github.com/MARQUEZ93/plan-my-hikes">
