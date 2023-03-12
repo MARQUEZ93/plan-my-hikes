@@ -1,18 +1,11 @@
 import {
-    Button,
     Container,
-    Header,
-    Icon,
     Image,
-    Item,
     Menu,
-    Segment,
   } from 'semantic-ui-react';
 import logo from '../images/bigger.svg';
 
-
-function MainMenu({fixed, mobile=false}){
-
+function MainMenu({mobile=false}){
     if (mobile) {
         return (
             <Menu pointing secondary size='large'>
@@ -22,12 +15,9 @@ function MainMenu({fixed, mobile=false}){
             </Menu>
         );
     }
-
     return (<Menu
-              fixed={fixed ? 'top' : null}
-              // inverted={!fixed}
-              pointing={!fixed}
-              secondary={!fixed}
+              pointing
+              secondary
               size='large'
             >
               <Container>
@@ -36,7 +26,7 @@ function MainMenu({fixed, mobile=false}){
                 </Menu.Item>
                 <Menu.Item position='right'>
                     <Menu.Item active as='a'>Home</Menu.Item >
-                    <Menu.Item  as='a' target="_blank" href=
+                    <Menu.Item as='a' target="_blank" href=
                         "https://github.com/MARQUEZ93/plan-my-hikes">
                             About</Menu.Item >
                     <Menu.Item  as='a' href=
@@ -45,7 +35,6 @@ function MainMenu({fixed, mobile=false}){
               </Container>
             </Menu>
     );
-
 };
 
 export default MainMenu;

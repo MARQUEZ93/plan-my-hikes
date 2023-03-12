@@ -1,12 +1,6 @@
 import {
-    Button,
     Container,
     Header,
-    Icon,
-    Image,
-    Item,
-    Menu,
-    Segment,
   } from 'semantic-ui-react';
 
 import PropTypes from 'prop-types';
@@ -19,7 +13,8 @@ import RandomPark from './RandomPark';
  */
 const HomepageHeading = ({ mobile=false}) => {
     return (
-        <Container text>
+        <Container text style={{backgroundColor: '#F0F0F0', paddingBottom: '7em',
+          textAlign:'center'}}>
             <Header
                 as='h1'
                 content='Get your hiking itinerary!'
@@ -28,12 +23,12 @@ const HomepageHeading = ({ mobile=false}) => {
                 color: '#1b1c1d',
                 fontSize: mobile ? '1.5em' : '3em',
                 fontWeight: 'normal',
-                // marginBottom: mobile ?  '0.25em' : '.5em',
-                marginTop: mobile ? '0.75em' : '1.5em',
+                marginBottom: mobile ?  '0.25em' : '.5em',
+                marginTop: mobile ? '0.5em' : '1em',
                 }}
             />
-            <SearchHikes mobile/>
-            <RandomPark mobile />
+            <SearchHikes/>
+            <RandomPark />
         </Container>
     );
 };
