@@ -5,10 +5,12 @@ import NoMatch from './NoMatch';
 import {
     Container,
     Header,
+    Grid,
+    Image
   } from 'semantic-ui-react';
 
 import SearchHikes from './SearchHikes';
-import RandomPark from './RandomPark';
+
 
 function Park({mobile=false}) {
 
@@ -39,11 +41,12 @@ function Park({mobile=false}) {
         if (!parkData){
             return <NoMatch />;
         }
+        console.log(`/images/${name}.jpg`);
         return (
             <Container text style={{backgroundColor: 
                 '#F0F0F0', paddingBottom: '7em',
               textAlign:'center'}}>
-                  <SearchHikes size={'mini'}/>
+                  <SearchHikes size={'mini'} />
                     <Header
                         as='h1'
                         content={parkData.name}
@@ -56,17 +59,29 @@ function Park({mobile=false}) {
                         // marginTop: mobile ? '0.5em' : '1em',
                         }}
                     />
+                    <Image 
+                        src={`/static/images/a.jpg`} />
+                        {/* <Image 
+                        src={`./public/images/a.jpg`} />
+                         <Image 
+                        src={`images/a.jpg`} />
+                         <Image 
+                        src={`public/images/a.jpg`} /> */}
+                    <Grid columns={2}>
+                        <Grid.Column>
+                            <Header as="h2">Location</Header>
+                            <p>{parkData.location}</p>
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Header as="h2">Schedule</Header>
+                            <p>{parkData.schedule}</p>
+                        </Grid.Column>
+                    </Grid>
             </Container>
-                // <p>Location:{parkData.location}</p>
-                // <p>Schedule:{parkData.schedule}</p>
-                // <p>Hidden Gem:{parkData.hidden_gem}</p>
-                // <p>Unique:{parkData.unique}</p>
-                // <p>Best:{parkData.best}</p>
-                // <p>Camping:{parkData.camping}</p>
         );
     }
     return (
-        <div className="App">
+        <div>
             <p>Loading...</p>
         </div>
     );
