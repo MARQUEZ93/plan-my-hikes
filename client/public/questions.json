@@ -1,21 +1,9 @@
-[{
-    "best": {
-      "unique": "This is unique"
-    },
-    "hidden_gem": {
-      "unique": "This is unique"
-    },
-    "schedule": {
-      "unique": "This is unique"
-    },
-    "camping": {
-        "unique": "This is unique"
-    },
-    "unique": {
-        "unique": "This is unique"
-    },
-    "toughest": {
-        "unique": "This is unique"
-    }
-  }]
+{
+    "best": "What is the one of the single best experiences of {PARK_NAME}?",
+    "hidden_gem": "What is a hidden gem of {PARK_NAME}?",
+    "schedule": "Please provide a detailed itinerary for {PARK_NAME} for 6 nights. The itinerary must include overnight details, park entrance details, parking details, trail names & hike duration.",
+    "camping": "What is the one of the best camping trails in {PARK_NAME}? Include parking details, whether a reservation is necessary, hike duration & why is this trail is good for camping?",
+    "unique": "What are some unique advice/tips for {PARK_NAME}?",
+    "toughest": "I am in great physical shape. What is one of the toughest hikes in {PARK_NAME}? Include hike duration & specific details for why this hike is demanding."
+}
   
