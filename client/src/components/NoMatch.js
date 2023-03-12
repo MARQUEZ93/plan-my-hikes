@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
   Container,
-  Header,
   Button,
   Icon
 } from 'semantic-ui-react';
@@ -15,7 +14,7 @@ function NoMatch({mobile = false}) {
         <Link to="/"><Button
               style={{marginTop: mobile ? '1em': '2em', 
               marginBottom: mobile ? '1em' : '2em',
-                  fontFamily: 'Quicksand'}} primary size='large'>
+                  fontFamily: 'Quicksand'}} primary size='massive'>
               Nothing to see here!
               <Icon corner='right' name='home'/>
           </Button></Link>
