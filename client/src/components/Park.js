@@ -43,9 +43,9 @@ function Park({mobile=false}) {
         }
         console.log(`/images/${name}.jpg`);
         return (
-            <Container text style={{backgroundColor: 
+            <Container style={{backgroundColor: 
                 '#F0F0F0', paddingBottom: '7em',
-              textAlign:'center'}}>
+              textAlign:'center', display: 'flex', flexDirection: 'column'}}>
                   <SearchHikes size={'mini'} />
                     <Header
                         as='h1'
@@ -53,28 +53,21 @@ function Park({mobile=false}) {
                         inverted
                         style={{
                         color: '#1b1c1d',
-                        fontSize: mobile ? '1.5em' : '3em',
+                        fontSize: mobile ? '1.25em' : '2.5em',
                         fontWeight: 'normal',
-                        marginBottom: mobile ?  '0.25em' : '.5em',
+                        // marginBottom: mobile ?  '0.25em' : '.5em',
                         // marginTop: mobile ? '0.5em' : '1em',
                         }}
                     />
                     <Image 
-                        src={`/static/images/a.jpg`} />
-                        {/* <Image 
-                        src={`./public/images/a.jpg`} />
-                         <Image 
-                        src={`images/a.jpg`} />
-                         <Image 
-                        src={`public/images/a.jpg`} /> */}
-                    <Grid columns={2}>
+                        style={{margin: 'auto', borderRadius: '5em', 
+                            marginBottom: '2em'}}
+                        size='large'
+                        src={parkData.url} />
+                    <Grid columns={1}>
                         <Grid.Column>
-                            <Header as="h2">Location</Header>
-                            <p>{parkData.location}</p>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Header as="h2">Schedule</Header>
-                            <p>{parkData.schedule}</p>
+                            <p style={{color: '#10a37f', fontWeight: '700'}}>
+                                {parkData.schedule}</p>
                         </Grid.Column>
                     </Grid>
             </Container>
