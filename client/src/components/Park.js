@@ -6,10 +6,20 @@ import {
     Container,
     Header,
     Grid,
-    Image
+    Image,
+    Button
   } from 'semantic-ui-react';
 
 import SearchHikes from './SearchHikes';
+
+const options = [
+    { key: '1', text: 'Option 1', value: 'Option 1' },
+    { key: '2', text: 'Option 2', value: 'Option 2' },
+    { key: '3', text: 'Option 3', value: 'Option 3' },
+    { key: '4', text: 'Option 4', value: 'Option 4' },
+    { key: '5', text: 'Option 5', value: 'Option 5' },
+  ];
+
 
 
 function Park({mobile=false}) {
@@ -17,6 +27,12 @@ function Park({mobile=false}) {
     const { name } = useParams();
 
     const [ data, setData ] = useState( [] );
+
+      const [selected, setSelected] = useState(options[0]);
+
+      const handleButtonClick = (option) => {
+        setSelected(option);
+      };
 
     const getData=()=>{
         fetch('../data.json'
@@ -41,7 +57,6 @@ function Park({mobile=false}) {
         if (!parkData){
             return <NoMatch />;
         }
-        console.log(`/images/${name}.jpg`);
         return (
             <Container style={{backgroundColor: 
                 '#F0F0F0', paddingBottom: '7em',
@@ -60,16 +75,27 @@ function Park({mobile=false}) {
                         }}
                     />
                     <Image 
-                        style={{margin: 'auto', borderRadius: '5em', 
+                        style={{margin: 'auto', borderRadius: '3em', 
                             marginBottom: '2em'}}
                         size='large'
                         src={parkData.url} />
-                    <Grid columns={1}>
+                        <Button.Group>
+        {options.map((option) => (
+          <Button
+            key={option.key}
+            active={option.value === selected.value}
+            onClick={() => handleButtonClick(option)}
+          >
+            {option.text}
+          </Button>
+        ))}
+      </Button.Group>
+                    {/* <Grid columns={1}>
                         <Grid.Column>
                             <p style={{color: '#10a37f', fontWeight: '700'}}>
                                 {parkData.schedule}</p>
                         </Grid.Column>
-                    </Grid>
+                    </Grid> */}
             </Container>
         );
     }

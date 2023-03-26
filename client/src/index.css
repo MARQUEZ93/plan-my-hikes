@@ -1,9 +1,9 @@
 * {
-  font-family: 'Quicksand';
+  font-family: 'Inconsolata';
 }
 /* Footer Header(s) */
 .ui, .inverted, .header {
-  font-family: 'Quicksand' !important;
+  font-family: 'Inconsolata' !important;
 }
 body {
   background-color: #F0F0F0 !important;

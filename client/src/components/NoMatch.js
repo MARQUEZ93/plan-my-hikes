@@ -14,7 +14,7 @@ function NoMatch({mobile = false}) {
         <Link to="/"><Button
               style={{marginTop: mobile ? '1em': '2em', 
               marginBottom: mobile ? '1em' : '2em',
-                  fontFamily: 'Quicksand'}} primary size='massive'>
+                  fontFamily: 'Inconsolata'}} primary size='massive'>
               Nothing to see here!
               <Icon corner='right' name='home'/>
           </Button></Link>
