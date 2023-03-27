@@ -85,6 +85,7 @@ function SearchHikes({mobile = false, size = 'massive'}) {
     <Grid textAlign='center'>
       <Grid.Column>
         <Search
+          fluid
           loading={loading}
           placeholder='Find a National Park...'
           onResultSelect={(e, data) => {

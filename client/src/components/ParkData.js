@@ -36,11 +36,11 @@ function getQuestion(park_name, value){
     } else if (value === "busy"){
         return "What are the most crowded months to visit " + park_name + "?";
     } else if (value === "toughest"){
-        return "I am in great physical shape. What is one of the toughest hikes in " + park_name + "? Include hike duration & specific details for why this hike is demanding.";
+        return "I am in great physical shape. What is one of the toughest hikes in " + park_name + "? Include hike duration & specific details for why this hike is demanding. " + park_name + "?";
     }
 }
 
-function Park({mobile=false}) {
+function ParkData({mobile=false}) {
 
     const { name } = useParams();
 
@@ -51,20 +51,6 @@ function Park({mobile=false}) {
       const handleButtonClick = (option) => {
         setSelected(option);
       };
-
-    const getData=()=>{
-        fetch('../data.json'
-        , {
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        }).then(function(response){
-            return response.json();
-        }).then(function(myJson) {
-            setData(myJson);
-        });
-    };
 
     useEffect(()=>{
         getData();
@@ -79,7 +65,6 @@ function Park({mobile=false}) {
             <Container style={{backgroundColor: 
                 '#F0F0F0', paddingBottom: '7em',
               textAlign:'center', display: 'flex', flexDirection: 'column'}}>
-                  <SearchHikes size={'mini'} />
                     <Header
                         as='h1'
                         content={parkData.name}
@@ -108,36 +93,31 @@ function Park({mobile=false}) {
                             </Button>
                         ))}
                     </Button.Group>
-                    <Container style={{backgroundColor: 
-                '#F0F0F0', marginTop: '2em', paddingTop: '3em',
-              textAlign:'center', display: 'flex', flexDirection: 'column'}}>
-                        <Header
-                            as='h3'
-                            content={'Hey ChatGPT...' }
-                            // inverted
-                            style={{
-                            // color: '#10a37f',
-                            fontSize: mobile ? '1.25em' : '2.5em',
-                            fontWeight: 'bold',
-                            }}
-                        />
-                        <Header
-                            as='h5'
-                            content={getQuestion(parkData.name, selected.value)}
-                            style={{
-                            // color: '#10a37f',
-                            fontSize: mobile ? '1em' : '2em',
-                            paddingBottom: '2em',
-                            }}
-                        />
-                        <Grid columns={1}>
+                    <Header
+                        as='h3'
+                        content={'Hey ChatGPT,' }
+                        inverted
+                        style={{
+                        color: '#10a37f',
+                        fontSize: mobile ? '1.25em' : '2.5em',
+                        fontWeight: 'bold',
+                        }}
+                    />
+                    <Header
+                        as='h5'
+                        content={getQuestion(parkData.name, selected.value)}
+                        inverted
+                        style={{
+                        color: '#10a37f',
+                        fontSize: mobile ? '1em' : '2em',
+                        }}
+                    />
+                    {/* <Grid columns={1}>
                         <Grid.Column>
-                            <p style={{fontWeight: '700', 
-                                textAlign: 'center'}}>
+                            <p style={{color: '#10a37f', fontWeight: '700'}}>
                                 {parkData.schedule}</p>
                         </Grid.Column>
-                    </Grid>
-                    </Container>
+                    </Grid> */}
             </Container>
         );
     }
@@ -148,4 +128,4 @@ function Park({mobile=false}) {
     );
 }
 
-export default Park;
+export default ParkData;
