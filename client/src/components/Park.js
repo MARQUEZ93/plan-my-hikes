@@ -14,12 +14,12 @@ import SearchHikes from './SearchHikes';
 
 const options = [
     { key: '1', text: '7 Day Itinerary', value: 'schedule'},
-    { key: '2', text: 'Hidden Gem', value: 'hidden_gem' },
-    { key: '3', text: "Can't Miss Experience", value: 'best' },
-    { key: '4', text: 'Tips', value: 'unique' },
-    { key: '5', text: 'Camping', value: 'camping' },
+    { key: '2', text: "Can't Miss Experience", value: 'best' },
+    { key: '3', text: 'Hidden Gem', value: 'hidden_gem' },
+    { key: '4', text: 'Camping', value: 'camping' },
+    { key: '5', text: 'Busy Season', value: 'busy' },
     { key: '6', text: 'Toughest Hike', value: 'toughest' },
-    { key: '7', text: 'Busy Season', value: 'busy' },
+    { key: '7', text: 'Tips', value: 'unique' },
   ];
 
 function getQuestion(park_name, value){
@@ -28,15 +28,15 @@ function getQuestion(park_name, value){
     } else if (value === "hidden_gem") {
         return "What is a hidden gem of  " + park_name + "?";
     } else if (value === "schedule"){
-        return "What is the one of the single best experiences of " + park_name + "?";
+        return "Please provide a detailed 6 night itinerary for " + park_name + "!";
     } else if (value === "camping"){
-        return "What is the one of the single best experiences of " + park_name + "?";
+        return "Where do you recommend to go camping in " + park_name + "?";
     } else if (value === "unique"){
-        return "What are some unique advice/tips for " + park_name + "?";
+        return "Please provide me some unique tips for " + park_name + "?";
     } else if (value === "busy"){
         return "What are the most crowded months to visit " + park_name + "?";
     } else if (value === "toughest"){
-        return "I am in great physical shape. What is one of the toughest hikes in " + park_name + "? Include hike duration & specific details for why this hike is demanding.";
+        return "What is one of the toughest hikes in " + park_name + "?";
     }
 }
 
