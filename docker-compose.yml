@@ -2,6 +2,12 @@
 version: '3'
 
 services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pg-pmh
   backend:
     build:
       context: ./backend
@@ -9,6 +15,10 @@ services:
     image: "aemarquez1993/plan-my-hikes-backend"
     ports:
       - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://<your-postgres-username>:<your-postgres-password>@db:5432/<your-postgres-database-name>
   frontend:
     build:
       context: ./client
