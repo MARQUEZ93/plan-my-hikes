@@ -43,6 +43,7 @@ function getQuestion(park_name, value){
 function Park({mobile=false}) {
 
     const { name } = useParams();
+    const [ park, setPark ] = useState('');
 
     const [ data, setData ] = useState( [] );
 
@@ -52,29 +53,19 @@ function Park({mobile=false}) {
         setSelected(option);
       };
 
-    const getData=()=>{
-        fetch('../data.json'
-        , {
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        }).then(function(response){
-            return response.json();
-        }).then(function(myJson) {
-            setData(myJson);
-        });
-    };
-
-    useEffect(()=>{
-        getData();
-    },[]);
-
-    if (data && data[0]){
-        const parkData = data[0][name];
-        if (!parkData){
-            return <NoMatch />;
-        }
+      useEffect(() => {
+        fetch(`http://localhost:5000/parks/${name}`)
+          .then(response => response.json())
+          .then(dataRes => {
+              console.log(dataRes);
+              setPark(dataRes);
+          })   
+          .catch(error => console.error(error));
+      }, [name]);
+    
+      if (!park) {
+        return <div>{name}</div>;
+      }
         return (
             <Container style={{backgroundColor: 
                 '#F0F0F0', paddingBottom: '7em',
@@ -82,7 +73,7 @@ function Park({mobile=false}) {
                   <SearchHikes size={'mini'} />
                     <Header
                         as='h1'
-                        content={parkData.name}
+                        content={'hi'}
                         inverted
                         style={{
                         color: '#1b1c1d',
@@ -92,7 +83,7 @@ function Park({mobile=false}) {
                         // marginTop: mobile ? '0.5em' : '1em',
                         }}
                     />
-                    <Image 
+                    {/* <Image 
                         style={{margin: 'auto', borderRadius: '3em', 
                             marginBottom: '2em'}}
                         size='large'
@@ -136,16 +127,11 @@ function Park({mobile=false}) {
                                 textAlign: 'center'}}>
                                 {parkData.schedule}</p>
                         </Grid.Column>
-                    </Grid>
-                    </Container>
+                    </Grid> */}
+                    {/* </Container> */}
             </Container>
         );
-    }
-    return (
-        <div>
-            <p>Loading...</p>
-        </div>
-    );
+    // }
 }
 
 export default Park;

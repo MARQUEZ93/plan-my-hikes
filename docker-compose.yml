@@ -5,9 +5,9 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_USER: username
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: pg-pmh
+      POSTGRES_DB: pmh
   backend:
     build:
       context: ./backend
@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgres://<your-postgres-username>:<your-postgres-password>@db:5432/<your-postgres-database-name>
+      - DATABASE_URL=postgres://admin:passsword@db:5432/pmh
   frontend:
     build:
       context: ./client
