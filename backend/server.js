@@ -27,7 +27,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
 
 app.get('/parks/:route', async (req, res) => {
   const route = req.params.route;
-  pool.query('SELECT * FROM parks WHERE route = $1', [route], (err, result) => {
+  pool.query('SELECT name, route, location, tough, gem, schedule, busy, camping, tips, best FROM parks WHERE route = $1', [route], (err, result) => {
     if (err) {
       console.error('Error executing query', err);
       res.status(500).send('Error executing query');

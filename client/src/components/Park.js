@@ -14,28 +14,28 @@ import SearchHikes from './SearchHikes';
 const options = [
     { key: '1', text: '7 Day Itinerary', value: 'schedule'},
     { key: '2', text: "Can't Miss Experience", value: 'best' },
-    { key: '3', text: 'Hidden Gem', value: 'hidden_gem' },
+    { key: '3', text: 'Hidden Gem', value: 'gem' },
     { key: '4', text: 'Camping', value: 'camping' },
     { key: '5', text: 'Busy Season', value: 'busy' },
-    { key: '6', text: 'Toughest Hike', value: 'toughest' },
-    { key: '7', text: 'Tips', value: 'unique' },
+    { key: '6', text: 'Toughest Hike', value: 'tough' },
+    { key: '7', text: 'Tips', value: 'tips' },
   ];
 
-function getQuestion(park_name, value){
+function getQuestion(parkName, value){
     if (value === "best"){
-        return "What is the one of the single best experiences of " + park_name + "?";
-    } else if (value === "hidden_gem") {
-        return "What is a hidden gem of  " + park_name + "?";
+        return "What is the one of the single best experiences of " + parkName + "?";
+    } else if (value === "gem") {
+        return "What is a hidden gem of  " + parkName + "?";
     } else if (value === "schedule"){
-        return "Please provide a detailed 6 night itinerary for " + park_name + "!";
+        return "Please provide a detailed 6 night itinerary for " + parkName + "!";
     } else if (value === "camping"){
-        return "Where do you recommend to go camping in " + park_name + "?";
-    } else if (value === "unique"){
-        return "Please provide me some unique tips for " + park_name + "?";
+        return "Where do you recommend to go camping in " + parkName + "?";
+    } else if (value === "tips"){
+        return "Please provide me some unique tips for " + parkName + "?";
     } else if (value === "busy"){
-        return "What are the most crowded months to visit " + park_name + "?";
-    } else if (value === "toughest"){
-        return "What is one of the toughest hikes in " + park_name + "?";
+        return "What are the most crowded months to visit " + parkName + "?";
+    } else if (value === "tough"){
+        return "What is one of the toughest hikes in " + parkName + "?";
     }
 }
 
@@ -44,7 +44,7 @@ function Park({mobile=false}) {
     const { name } = useParams();
     const [ park, setPark ] = useState('');
 
-      const [selected, setSelected] = useState(options[0]);
+    const [selected, setSelected] = useState(options[0]);
 
       const handleButtonClick = (option) => {
         setSelected(option);
@@ -54,7 +54,6 @@ function Park({mobile=false}) {
         fetch(`http://localhost:5000/parks/${name}`)
           .then(response => response.json())
           .then(dataRes => {
-              console.log(dataRes);
               setPark(dataRes);
           })   
           .catch(error => console.error(error));
@@ -64,6 +63,7 @@ function Park({mobile=false}) {
         return <div>{name}</div>;
       }
       console.log(park);
+      console.log(selected);
         return (
             <Container style={{backgroundColor: 
                 '#F0F0F0', paddingBottom: '7em',
@@ -123,7 +123,7 @@ function Park({mobile=false}) {
                         <Grid.Column>
                             <p style={{fontWeight: '700', 
                                 textAlign: 'center'}}>
-                                {park.schedule}</p>
+                                {park[selected.value]}</p>
                         </Grid.Column>
                     </Grid>
                     </Container>
