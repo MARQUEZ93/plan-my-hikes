@@ -10,7 +10,21 @@ const d = loadData();
 d.shift();
 const dd = _.map(d, d=> [d[0],d[1], d[2] + (d[3] ? ","+d[3] : "")]);
 
-let obj = {};
-const data = _.forEach(dd, row => obj[row[1]] = {location: row[2], name: row[0]});
+let list = [];
+const data = _.forEach(dd, row => list.push({title: row[0] + " (" + row[2] + ")", name: row[0], route: row[1] }));
 
-console.log(obj);
+console.log(list.length);
+
+function compare( a, b ) {
+  if ( a.name < b.name ){
+    return -1;
+  }
+  if ( a.name > b.name ){
+    return 1;
+  }
+  return 0;
+}
+
+list = list.sort( compare );
+
+console.dir(list, {'maxArrayLength': null});

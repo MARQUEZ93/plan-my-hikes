@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react';
 import { useParams } from "react-router-dom";
-import NoMatch from './NoMatch';
 
 import {
     Container,
@@ -45,8 +44,6 @@ function Park({mobile=false}) {
     const { name } = useParams();
     const [ park, setPark ] = useState('');
 
-    const [ data, setData ] = useState( [] );
-
       const [selected, setSelected] = useState(options[0]);
 
       const handleButtonClick = (option) => {
@@ -66,6 +63,7 @@ function Park({mobile=false}) {
       if (!park) {
         return <div>{name}</div>;
       }
+      console.log(park);
         return (
             <Container style={{backgroundColor: 
                 '#F0F0F0', paddingBottom: '7em',
@@ -73,7 +71,7 @@ function Park({mobile=false}) {
                   <SearchHikes size={'mini'} />
                     <Header
                         as='h1'
-                        content={'hi'}
+                        content={park.name}
                         inverted
                         style={{
                         color: '#1b1c1d',
@@ -83,11 +81,11 @@ function Park({mobile=false}) {
                         // marginTop: mobile ? '0.5em' : '1em',
                         }}
                     />
-                    {/* <Image 
+                    <Image 
                         style={{margin: 'auto', borderRadius: '3em', 
                             marginBottom: '2em'}}
                         size='large'
-                        src={parkData.url} />
+                        src={`http://localhost:5000/images/${park.route}.jpeg`} />
                     <Button.Group>
                         {options.map((option) => (
                             <Button
@@ -114,7 +112,7 @@ function Park({mobile=false}) {
                         />
                         <Header
                             as='h5'
-                            content={getQuestion(parkData.name, selected.value)}
+                            content={getQuestion(park.name, selected.value)}
                             style={{
                             // color: '#10a37f',
                             fontSize: mobile ? '1em' : '2em',
@@ -125,13 +123,12 @@ function Park({mobile=false}) {
                         <Grid.Column>
                             <p style={{fontWeight: '700', 
                                 textAlign: 'center'}}>
-                                {parkData.schedule}</p>
+                                {park.schedule}</p>
                         </Grid.Column>
-                    </Grid> */}
-                    {/* </Container> */}
+                    </Grid>
+                    </Container>
             </Container>
         );
-    // }
 }
 
 export default Park;

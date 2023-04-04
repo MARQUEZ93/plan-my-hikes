@@ -3,20 +3,7 @@ import React from 'react';
 import { Search, Grid, Header, Segment } from 'semantic-ui-react';
 import { Navigate } from "react-router-dom";
 
-const source = [
-  {
-    title: 'Big Bend National Park (Texas, USA)',
-    name: 'Big Bend National Park'
-  },
-  {
-    title: 'Joshua Tree National Park (California, USA)',
-    name: 'Joshua Tree National Park'
-  },
-  {
-    title: 'Los Glaciares National Park (Argentina)',
-    name: 'Los Glaciares National Park'
-  }
-];
+import {parks} from "../data/parks";
 
 const initialState = {
   loading: false,
@@ -24,10 +11,6 @@ const initialState = {
   value: '',
   submit: false,
   name: ''
-}
-
-function snakeCase(parkName){
-  return parkName.split(' ').join('_');
 }
 
 function exampleReducer(state, action) {
@@ -39,7 +22,7 @@ function exampleReducer(state, action) {
     case 'FINISH_SEARCH':
       return { ...state, loading: false, results: action.results };
     case 'UPDATE_SELECTION':
-      return { ...state, value: action.selection, submit: true, name: action.name };
+      return { ...state, value: action.selection, submit: true, name: action.name, route: action.route };
 
     default:
       throw new Error()
@@ -47,8 +30,8 @@ function exampleReducer(state, action) {
 }
 
 function SearchHikes({mobile = false, size = 'massive'}) {
-  const [state, dispatch] = React.useReducer(exampleReducer, initialState)
-  const { loading, results, value } = state
+  const [state, dispatch] = React.useReducer(exampleReducer, initialState);
+  const { loading, results, value } = state;
 
   const timeoutRef = React.useRef();
 
@@ -67,7 +50,7 @@ function SearchHikes({mobile = false, size = 'massive'}) {
 
       dispatch({
         type: 'FINISH_SEARCH',
-        results: _.filter(source, isMatch),
+        results: _.filter(parks, isMatch),
       })
     }, 300)
   }, []);
@@ -79,7 +62,7 @@ function SearchHikes({mobile = false, size = 'massive'}) {
   }, []);
 
   if (state.submit){
-    return <Navigate to={`/parks/${snakeCase(state.name.toLowerCase())}`} />;
+    return <Navigate to={`/parks/${state.route}`} />;
   }
   return (
     <Grid textAlign='center'>
@@ -89,7 +72,7 @@ function SearchHikes({mobile = false, size = 'massive'}) {
           loading={loading}
           placeholder='Find a National Park...'
           onResultSelect={(e, data) => {
-            dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title, name: data.result.name})
+            dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title, name: data.result.name, route: data.result.route})
           }}
           onSearchChange={handleSearchChange}
           results={results}

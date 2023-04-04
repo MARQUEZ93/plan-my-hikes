@@ -3,7 +3,7 @@
     "hidden_gem": "What is a hidden gem of {PARK_NAME}?",
     "schedule": "Please provide a detailed itinerary for {PARK_NAME} for 6 nights. The itinerary must include overnight details, park entrance details, parking details, trail names & hike duration. If the park is too small for 6 nights, for example a park then can be done entirely in 1 day, it is okay if the schedule reflects that & is less than 6 nights.",
     "camping": "What is the one of the best camping trails in {PARK_NAME}? Include parking details, whether a reservation is necessary, hike duration & why is this trail is good for camping?",
-    "unique": "What are some unique advice/tips for {PARK_NAME}?",
+    "tips": "What are some unique advice/tips for {PARK_NAME}?",
     "busy": "What are the most crowded months to visit {PARK_NAME}?",
     "toughest": "I am in great physical shape. What is one of the toughest hikes in {PARK_NAME}? Include hike duration & specific details for why this hike is demanding."
 }
