@@ -10,6 +10,7 @@ import {
   } from 'semantic-ui-react';
 
 import SearchHikes from './SearchHikes';
+import NoMatch from './NoMatch';
 
 const options = [
     { key: '1', text: '7 Day Itinerary', value: 'schedule'},
@@ -42,93 +43,101 @@ function getQuestion(parkName, value){
 function Park({mobile=false}) {
 
     const { name } = useParams();
+    const [ parkName, setParkName ] = useState(name);
     const [ park, setPark ] = useState('');
 
     const [selected, setSelected] = useState(options[0]);
+    const [noMatch, setNoMatch] = useState(false);
 
-      const handleButtonClick = (option) => {
+    const handleButtonClick = (option) => {
         setSelected(option);
+    };
+
+    const fetchParkData = () => {
+        fetch(`http://localhost:5000/parks/${name}`)
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+              console.log(data);
+            setPark(data);
+          }).catch(err => setNoMatch(true));
       };
 
-      useEffect(() => {
-        fetch(`http://localhost:5000/parks/${name}`)
-          .then(response => response.json())
-          .then(dataRes => {
-              setPark(dataRes);
-          })   
-          .catch(error => console.error(error));
-      }, [name]);
+    useEffect(() => {
+        fetchParkData();
+    }, [parkName]);
     
-      if (!park) {
-        return <div>{name}</div>;
-      }
-      console.log(park);
-      console.log(selected);
-        return (
-            <Container style={{backgroundColor: 
-                '#F0F0F0', paddingBottom: '7em',
-              textAlign:'center', display: 'flex', flexDirection: 'column'}}>
-                  <SearchHikes size={'mini'} />
+    if (noMatch && !park) {
+        return <NoMatch />;
+    } else if (!park){
+        return <div>Loading...{park}</div>;
+    }
+    return (
+        <Container style={{backgroundColor: 
+            '#F0F0F0', paddingBottom: '7em',
+            textAlign:'center', display: 'flex', flexDirection: 'column'}}>
+                <SearchHikes size={'mini'}/>
+                <Header
+                    as='h1'
+                    content={park.name}
+                    inverted
+                    style={{
+                    color: '#1b1c1d',
+                    fontSize: mobile ? '1.25em' : '2.5em',
+                    fontWeight: 'normal',
+                    // marginBottom: mobile ?  '0.25em' : '.5em',
+                    // marginTop: mobile ? '0.5em' : '1em',
+                    }}
+                />
+                <Image 
+                    style={{margin: 'auto', borderRadius: '3em', 
+                        marginBottom: '2em'}}
+                    size='large'
+                    src={`http://localhost:5000/images/${park.route}.jpeg`} />
+                <Button.Group>
+                    {options.map((option) => (
+                        <Button
+                            key={option.key}
+                            active={option.value === selected.value}
+                            onClick={() => handleButtonClick(option)}
+                        >
+                            {option.text}
+                        </Button>
+                    ))}
+                </Button.Group>
+                <Container style={{backgroundColor: 
+            '#F0F0F0', marginTop: '2em', paddingTop: '3em',
+            textAlign:'center', display: 'flex', flexDirection: 'column'}}>
                     <Header
-                        as='h1'
-                        content={park.name}
-                        inverted
+                        as='h3'
+                        content={'Hey ChatGPT...' }
+                        // inverted
                         style={{
-                        color: '#1b1c1d',
+                        // color: '#10a37f',
                         fontSize: mobile ? '1.25em' : '2.5em',
-                        fontWeight: 'normal',
-                        // marginBottom: mobile ?  '0.25em' : '.5em',
-                        // marginTop: mobile ? '0.5em' : '1em',
+                        fontWeight: 'bold',
                         }}
                     />
-                    <Image 
-                        style={{margin: 'auto', borderRadius: '3em', 
-                            marginBottom: '2em'}}
-                        size='large'
-                        src={`http://localhost:5000/images/${park.route}.jpeg`} />
-                    <Button.Group>
-                        {options.map((option) => (
-                            <Button
-                                key={option.key}
-                                active={option.value === selected.value}
-                                onClick={() => handleButtonClick(option)}
-                            >
-                                {option.text}
-                            </Button>
-                        ))}
-                    </Button.Group>
-                    <Container style={{backgroundColor: 
-                '#F0F0F0', marginTop: '2em', paddingTop: '3em',
-              textAlign:'center', display: 'flex', flexDirection: 'column'}}>
-                        <Header
-                            as='h3'
-                            content={'Hey ChatGPT...' }
-                            // inverted
-                            style={{
-                            // color: '#10a37f',
-                            fontSize: mobile ? '1.25em' : '2.5em',
-                            fontWeight: 'bold',
-                            }}
-                        />
-                        <Header
-                            as='h5'
-                            content={getQuestion(park.name, selected.value)}
-                            style={{
-                            // color: '#10a37f',
-                            fontSize: mobile ? '1em' : '2em',
-                            paddingBottom: '2em',
-                            }}
-                        />
-                        <Grid columns={1}>
-                        <Grid.Column>
-                            <p style={{fontWeight: '700', 
-                                textAlign: 'center'}}>
-                                {park[selected.value]}</p>
-                        </Grid.Column>
-                    </Grid>
-                    </Container>
-            </Container>
-        );
+                    <Header
+                        as='h5'
+                        content={getQuestion(park.name, selected.value)}
+                        style={{
+                        // color: '#10a37f',
+                        fontSize: mobile ? '1em' : '2em',
+                        paddingBottom: '2em',
+                        }}
+                    />
+                    <Grid columns={1}>
+                    <Grid.Column>
+                        <p style={{fontWeight: '700', 
+                            textAlign: 'center'}}>
+                            {park[selected.value]}</p>
+                    </Grid.Column>
+                </Grid>
+                </Container>
+        </Container>
+    );
 }
 
 export default Park;
