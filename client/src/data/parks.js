@@ -1,4 +1,4 @@
-export const parks = [
+const parks = [
     {
       title: 'Acadia National Park (Maine, United States)',
       name: 'Acadia National Park',
@@ -559,4 +559,5 @@ export const parks = [
       name: 'Zion National Park',
       route: 'zion_national_park'
     }
-  ];
+];
+export default parks;
