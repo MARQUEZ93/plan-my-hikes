@@ -1,16 +1,16 @@
 import React,{useState,useEffect} from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, redirect } from "react-router-dom";
 
 import {
     Container,
     Header,
     Grid,
     Image,
-    Button
+    Button,
   } from 'semantic-ui-react';
 
-import SearchHikes from './SearchHikes';
 import NoMatch from './NoMatch';
+import SearchBar from './SearchBar';
 
 const options = [
     { key: '1', text: '7 Day Itinerary', value: 'schedule'},
@@ -43,8 +43,7 @@ function getQuestion(parkName, value){
 function Park({mobile=false}) {
 
     const { name } = useParams();
-    const [ parkName, setParkName ] = useState(name);
-    const [ park, setPark ] = useState('');
+    const [park, setPark] = useState(null);
 
     const [selected, setSelected] = useState(options[0]);
     const [noMatch, setNoMatch] = useState(false);
@@ -53,6 +52,7 @@ function Park({mobile=false}) {
         setSelected(option);
     };
 
+    const nav = useNavigate();
     const fetchParkData = () => {
         fetch(`http://localhost:5000/parks/${name}`)
           .then(response => {
@@ -61,23 +61,21 @@ function Park({mobile=false}) {
           .then(data => {
               console.log(data);
             setPark(data);
-          }).catch(err => setNoMatch(true));
+          }).catch(err => nav("/"));
       };
 
     useEffect(() => {
         fetchParkData();
-    }, [parkName]);
+    }, [name]);
     
-    if (noMatch && !park) {
-        return <NoMatch />;
-    } else if (!park){
-        return <div>Loading...{park}</div>;
+    if (!park){
+        return <div>Loading...</div>;
     }
     return (
         <Container style={{backgroundColor: 
             '#F0F0F0', paddingBottom: '7em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
-                <SearchHikes size={'mini'}/>
+                <SearchBar />
                 <Header
                     as='h1'
                     content={park.name}

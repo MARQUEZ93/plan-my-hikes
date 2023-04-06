@@ -32,10 +32,10 @@ app.get('/parks/:route', async (req, res) => {
       console.error('Error executing query', err);
       res.status(500).send('Error executing query');
     } else if (result.rows.length === 0) {
-      console.error('Park not found');
+      console.error('Park not found: ' + route);
       res.status(404).send('Park not found');
     } else {
-      console.error('Park found');
+      console.log('Park found: ' + route);
       const park = result.rows[0];
       res.send(park);
     }

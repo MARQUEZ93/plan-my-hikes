@@ -5,12 +5,12 @@ import {
   Icon
 } from 'semantic-ui-react';
 
-import SearchHikes from './SearchHikes';
+import SearchBar from './SearchBar';
 
 function NoMatch({mobile = false}) {
     return ( <Container text style={{backgroundColor: 
       '#F0F0F0', paddingBottom: '9em', textAlign:'center'}}>
-        <SearchHikes size='large' />
+        <SearchBar />
         <Link to="/"><Button
               style={{marginTop: mobile ? '1em': '2em', 
               marginBottom: mobile ? '1em' : '2em',

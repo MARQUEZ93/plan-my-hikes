@@ -1,16 +1,17 @@
 import _ from 'lodash';
 import React from 'react';
-import { Search, Grid, Header, Segment } from 'semantic-ui-react';
+import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react';
 import { Navigate } from "react-router-dom";
 
-import {parks} from "../data/parks";
+import parks from "../data/parks";
 
 const initialState = {
   loading: false,
   results: [],
   value: '',
   submit: false,
-  name: ''
+  name: '',
+  route: ''
 }
 
 function exampleReducer(state, action) {
@@ -41,8 +42,7 @@ function SearchHikes({mobile = false, size = 'massive'}) {
 
     timeoutRef.current = setTimeout(() => {
       if (data.value.length === 0) {
-        dispatch({ type: 'CLEAN_QUERY' })
-        return redirect("/login");
+        dispatch({ type: 'CLEAN_QUERY' });
       }
 
       const re = new RegExp(_.escapeRegExp(data.value), 'i')
@@ -61,7 +61,7 @@ function SearchHikes({mobile = false, size = 'massive'}) {
     }
   }, []);
 
-  if (state.submit){
+  if (state.submit) {
     return <Navigate to={`/parks/${state.route}`} />;
   }
   return (
@@ -70,6 +70,7 @@ function SearchHikes({mobile = false, size = 'massive'}) {
         <Search
           fluid
           loading={loading}
+          noResultsMessage='No parks found.'
           placeholder='Find a National Park...'
           onResultSelect={(e, data) => {
             dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title, name: data.result.name, route: data.result.route})
