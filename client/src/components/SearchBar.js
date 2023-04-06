@@ -4,6 +4,7 @@ import { Search } from 'semantic-ui-react';
 
 import parks from "../data/parks";
 
+import { initialState, parksReducer } from '../utils/parksReducer';
 
 function ParkSearchBar() {
   const [query, setQuery] = useState('');
