@@ -11,6 +11,7 @@ import {
 
 import NoMatch from './NoMatch';
 import SearchBar from './SearchBar';
+import Questions from './Questions';
 
 const options = [
     { key: '1', text: '7 Day Itinerary', value: 'schedule'},
@@ -92,17 +93,8 @@ function Park({mobile=false}) {
                         marginBottom: '2em'}}
                     size='large'
                     src={`http://localhost:5000/images/${park.route}.jpeg`} />
-                <Button.Group>
-                    {options.map((option) => (
-                        <Button
-                            key={option.key}
-                            active={option.value === selected.value}
-                            onClick={() => handleButtonClick(option)}
-                        >
-                            {option.text}
-                        </Button>
-                    ))}
-                </Button.Group>
+                <Questions options={options} handleButtonClick={handleButtonClick} 
+                    selected={selected} />
                 <Container style={{backgroundColor: 
             '#F0F0F0', marginTop: '2em', paddingTop: '3em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
