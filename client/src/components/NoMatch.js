@@ -16,7 +16,7 @@ function NoMatch({mobile = false}) {
               marginBottom: mobile ? '1em' : '2em',
                   fontFamily: 'Inconsolata'}} primary size='massive'>
               Nothing to see here!
-              <Icon corner='right' name='home'/>
+              <Icon corner={'top right'} name='home'/>
           </Button></Link>
     </Container>);
 };

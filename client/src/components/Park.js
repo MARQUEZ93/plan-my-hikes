@@ -24,15 +24,15 @@ const options = [
 
 function getQuestion(parkName, value){
     if (value === "best"){
-        return "What is the one of the single best experiences of " + parkName + "?";
+        return "What is the one of the best experiences of " + parkName + "?";
     } else if (value === "gem") {
         return "What is a hidden gem of  " + parkName + "?";
     } else if (value === "schedule"){
-        return "Please provide a detailed 6 night itinerary for " + parkName + "!";
+        return "Please provide a 6 night itinerary for " + parkName + "!";
     } else if (value === "camping"){
         return "Where do you recommend to go camping in " + parkName + "?";
     } else if (value === "tips"){
-        return "Please provide me some unique tips for " + parkName + "?";
+        return "Please provide me some tips for " + parkName + "?";
     } else if (value === "busy"){
         return "What are the most crowded months to visit " + parkName + "?";
     } else if (value === "tough"){
@@ -59,7 +59,6 @@ function Park({mobile=false}) {
             return response.json();
           })
           .then(data => {
-              console.log(data);
             setPark(data);
           }).catch(err => nav("/"));
       };

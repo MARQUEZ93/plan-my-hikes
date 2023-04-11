@@ -25,7 +25,7 @@ const RandomPark = ({mobile}) => {
         marginBottom: mobile ? '1em' : '2em',
             fontFamily: 'Inconsolata'}} primary size='large'>
         Choose a National Park for me!  
-        <Icon corner='right' name='find'/>
+        <Icon corner='top right' name='find'/>
     </Button>);
 };
 
