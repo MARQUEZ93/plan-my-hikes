@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import logo from '../images/bigger.svg';
 
 
-function MainMenu({mobile=false}){
-    if (mobile) {
+function MainMenu({isMobile=false}){
+    if (isMobile) {
         return (
             <Menu widths='1' borderless pointing size='large'>
                 <Link to="/"><Menu.Item as='a' style={{margin:'auto'}}>

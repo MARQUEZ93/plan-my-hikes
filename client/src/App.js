@@ -22,10 +22,10 @@ function App() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  
   return (
     <BrowserRouter >
-      <SiteHeader isMobile />
+      <SiteHeader isMobile={isMobile} />
       <Routes style={{backgroundColor: '#F0F0F0'}}>
           <Route path="/" element={<HomepageHeading isMobile/>} />
           <Route path="/parks/:name" element={<Park isMobile/>} />
