@@ -45,8 +45,6 @@ const Questions = ({handleButtonClick, selected}) => {
         </Button.Group>
         );
     } else {
-        console.log(options);
-        console.log(selected);
         const filteredOptions = options.filter(op => op.value !== selected.value);
         const top = filteredOptions.slice(0, 3);
         const bottom = filteredOptions.slice(3);

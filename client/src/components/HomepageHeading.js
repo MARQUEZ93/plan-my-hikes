@@ -13,8 +13,7 @@ import RandomPark from './RandomPark';
  */
 const HomepageHeading = ({ mobile=false}) => {
     return (
-        <Container text style={{backgroundColor: 
-            '#F0F0F0', paddingBottom: '10em',
+        <Container text style={{paddingBottom: '10em',
           textAlign:'center'}}>
             <Header
                 as='h1'

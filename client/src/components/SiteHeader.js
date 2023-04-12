@@ -38,15 +38,13 @@ class MobileContainer extends Component {
   render() {
     const { children } = this.props;
     return (
-      <Media at='mobile'>
+      <Media at='mobile' style={{backgroundColor: '#F0F0F0'}}>
         <Segment
-          inverted
+          // style={{backgroundColor: 'white'}}
           textAlign='center'
           vertical
         >
-          <Container>
-            <MainMenu mobile={true} />
-          </Container>
+          <Container><MainMenu mobile={true} /></Container>
         </Segment>
         {children}
       </Media>

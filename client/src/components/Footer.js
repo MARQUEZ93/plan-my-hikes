@@ -6,7 +6,7 @@ import {
     Segment,
   } from 'semantic-ui-react';
 
-const Footer = () => (
+const Footer = ({isMobile=false}) => (
 <Segment inverted vertical style={{ paddingTop: '5em', paddingBottom: '5em' }}>
       <Container>
         <Grid divided inverted stackable>

@@ -10,7 +10,7 @@ import logo from '../images/bigger.svg';
 function MainMenu({mobile=false}){
     if (mobile) {
         return (
-            <Menu pointing secondary size='large'>
+            <Menu widths='1' borderless pointing size='large'>
                 <Link to="/"><Menu.Item as='a' style={{margin:'auto'}}>
                     <Image size='small' src={logo} />
                 </Menu.Item></Link>
