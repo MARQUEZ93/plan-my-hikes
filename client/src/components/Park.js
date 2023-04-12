@@ -46,8 +46,7 @@ function Park({mobile=false}) {
     const { name } = useParams();
     const [park, setPark] = useState(null);
 
-    const [selected, setSelected] = useState(options[0]);
-    const [noMatch, setNoMatch] = useState(false);
+    const [selected, setSelected] = useState({ key: '1', text: '7 Day Itinerary', value: 'schedule'});
 
     const handleButtonClick = (option) => {
         setSelected(option);
@@ -93,7 +92,7 @@ function Park({mobile=false}) {
                         marginBottom: '2em'}}
                     size='large'
                     src={`http://localhost:5000/images/${park.route}.jpeg`} />
-                <Questions options={options} handleButtonClick={handleButtonClick} 
+                <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
                 <Container style={{backgroundColor: 
             '#F0F0F0', marginTop: '2em', paddingTop: '3em',

@@ -13,8 +13,17 @@ import {
 
 import React,{useState,useEffect} from 'react';
 
+const options = [
+    { key: '1', text: '7 Day Itinerary', value: 'schedule'},
+    { key: '2', text: "Can't Miss Experience", value: 'best' },
+    { key: '3', text: 'Hidden Gem', value: 'gem' },
+    { key: '4', text: 'Camping', value: 'camping' },
+    { key: '5', text: 'Busy Season', value: 'busy' },
+    { key: '6', text: 'Toughest Hike', value: 'tough' },
+    { key: '7', text: 'Tips', value: 'tips' },
+];
 
-const Questions = ({options, handleButtonClick, selected}) => {
+const Questions = ({handleButtonClick, selected}) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -36,38 +45,32 @@ const Questions = ({options, handleButtonClick, selected}) => {
         </Button.Group>
         );
     } else {
-        return (<Sidebar.Pushable as={Segment}>
-            <Sidebar
-              as={Menu}
-              animation='overlay'
-              icon='labeled'
-              inverted
-              vertical
-              visible
-              width='thin'
-            >
-              <Menu.Item as='a'>
-                <Icon name='home' />
-                Home
-              </Menu.Item>
-              <Menu.Item as='a'>
-                <Icon name='gamepad' />
-                Games
-              </Menu.Item>
-              <Menu.Item as='a'>
-                <Icon name='camera' />
-                Channels
-              </Menu.Item>
-            </Sidebar>
-        
-            <Sidebar.Pusher>
-              <Segment basic>
-                <Header as='h3'>Application Content</Header>
-                <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-              </Segment>
-            </Sidebar.Pusher>
-          </Sidebar.Pushable>
-
+        console.log(options);
+        console.log(selected);
+        const filteredOptions = options.filter(op => op.value !== selected.value);
+        const top = filteredOptions.slice(0, 3);
+        const bottom = filteredOptions.slice(3);
+        return (<><Button.Group widths='3'>
+            {top.map((option) => (
+                <Button
+                    key={option.key}
+                    onClick={() => handleButtonClick(option)}
+                >
+                    {option.text}
+                </Button>
+            ))}
+        </Button.Group>
+        <Button.Group widths='3'>
+            {bottom.map((option) => (
+                <Button
+                    key={option.key}
+                    onClick={() => handleButtonClick(option)}
+                >
+                    {option.text}
+                </Button>
+            ))}
+        </Button.Group>
+        </>
         );
     }
 };
