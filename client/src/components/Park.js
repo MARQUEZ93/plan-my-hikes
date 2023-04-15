@@ -7,6 +7,7 @@ import {
     Grid,
     Image,
     Button,
+    Segment,
   } from 'semantic-ui-react';
 
 import NoMatch from './NoMatch';
@@ -118,13 +119,9 @@ function Park({mobile=false}) {
                     />
                     <Grid columns={1}>
                     <Grid.Column>
-                        <Container text>
-                            <p style={{fontWeight: '700', backgroundColor: 'white',
-                                padding: '1em',
-                                textAlign: 'center'}}>
-                                {park[selected.value]}
-                            </p>
-                        </Container>
+                        <Segment size={'big'} content textAlign='center'>
+                            {park[selected.value]}
+                        </Segment>
                     </Grid.Column>
                 </Grid>
                 </Container>
