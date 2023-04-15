@@ -9,12 +9,13 @@ import {
     Menu, 
     Segment, 
     Sidebar, 
+    Divider
   } from 'semantic-ui-react';
 
 import React,{useState,useEffect} from 'react';
 
 const options = [
-    { key: '1', text: '7 Day Itinerary', value: 'schedule'},
+    { key: '1', text: 'Seven Day Itinerary', value: 'schedule'},
     { key: '2', text: "Can't Miss Experience", value: 'best' },
     { key: '3', text: 'Hidden Gem', value: 'gem' },
     { key: '4', text: 'Camping', value: 'camping' },
@@ -32,43 +33,69 @@ const Questions = ({handleButtonClick, selected}) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
     if (windowWidth > 768 ){
-        return (<Button.Group>
-            {options.map((option) => (
-                <Button
-                    key={option.key}
-                    active={option.value === selected.value}
-                    onClick={() => handleButtonClick(option)}
-                >
-                    {option.text}
-                </Button>
-            ))}
-        </Button.Group>
+        return ( <>
+                    <Button.Group fluid>
+                        {options.slice(0,3).map((option) => (
+                            <Button
+                                style={{margin: '0.05em'}}
+                                key={option.key}
+                                active={option.value === selected.value}
+                                onClick={() => handleButtonClick(option)}
+                            >
+                                {option.text}
+                            </Button>
+                        ))}
+                    </Button.Group>
+                    <Button.Group fluid>
+                        {options.slice(3, 7).map((option) => (
+                            <Button
+                                style={{margin: '0.05em'}}
+                                key={option.key}
+                                active={option.value === selected.value}
+                                onClick={() => handleButtonClick(option)}
+                            >
+                                {option.text}
+                            </Button>
+                        ))}
+                    </Button.Group>
+                </>
         );
     } else {
-        const filteredOptions = options.filter(op => op.value !== selected.value);
-        const top = filteredOptions.slice(0, 3);
-        const bottom = filteredOptions.slice(3);
-        return (<><Button.Group widths='3'>
-            {top.map((option) => (
-                <Button
-                    key={option.key}
-                    onClick={() => handleButtonClick(option)}
-                >
-                    {option.text}
-                </Button>
-            ))}
-        </Button.Group>
-        <Button.Group widths='3'>
-            {bottom.map((option) => (
-                <Button
-                    key={option.key}
-                    onClick={() => handleButtonClick(option)}
-                >
-                    {option.text}
-                </Button>
-            ))}
-        </Button.Group>
-        </>
+        return (<>
+                    <Button.Group widths='3'>
+                            {options.slice(0,3).map((option) => (
+                                <Button
+                                    disabled={selected.value === option.value}
+                                    key={option.key}
+                                    onClick={() => handleButtonClick(option)}
+                                >
+                                    {option.text}
+                                </Button>
+                            ))}
+                        </Button.Group>
+                        <Divider fitted/>
+                        <Button.Group widths='3'>
+                            {options.slice(3,6).map((option) => (
+                                <Button
+                                    disabled={selected.value === option.value}
+                                    key={option.key}
+                                    onClick={() => handleButtonClick(option)}
+                                >
+                                    {option.text}
+                                </Button>
+                            ))}
+                        </Button.Group>
+                        <Divider fitted />
+                        <Button.Group fluid widths='1'>
+                            <Button
+                                disabled={selected.value === options[6].value}
+                                key={options[6].key}
+                                onClick={() => handleButtonClick(options[6])}
+                            >
+                                {options[6].text}
+                            </Button>
+                        </Button.Group>
+                </>
         );
     }
 };

@@ -118,9 +118,13 @@ function Park({mobile=false}) {
                     />
                     <Grid columns={1}>
                     <Grid.Column>
-                        <p style={{fontWeight: '700', 
-                            textAlign: 'center'}}>
-                            {park[selected.value]}</p>
+                        <Container text>
+                            <p style={{fontWeight: '700', backgroundColor: 'white',
+                                padding: '1em',
+                                textAlign: 'center'}}>
+                                {park[selected.value]}
+                            </p>
+                        </Container>
                     </Grid.Column>
                 </Grid>
                 </Container>
