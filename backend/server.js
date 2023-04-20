@@ -19,6 +19,10 @@ const pool = new Pool({
 
 app.use(express.static('public'));
 
+app.listen(5000, () => {
+  console.log('Server listening on port 5000');
+})
+
 app.get('/parks/:route', async (req, res) => {
   const route = req.params.route;
   pool.query('SELECT name, route, location, tough, gem, schedule, busy, camping, tips, best FROM parks WHERE route = $1', [route], (err, result) => {
