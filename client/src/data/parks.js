@@ -475,6 +475,11 @@ const parks = [
       route: 'tatra_national_park'
     },
     {
+      title: 'Tayrona National Park (Colombia)',
+      name: 'Tayrona National Park',
+      route: 'tayrona_national_park'
+    },
+    {
       title: 'Theodore Roosevelt National Park (North Dakota, United States)',
       name: 'Theodore Roosevelt National Park',
       route: 'theodore_roosevelt_national_park'
