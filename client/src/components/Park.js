@@ -5,12 +5,11 @@ import {
     Container,
     Header,
     Grid,
+    Label,
     Image,
-    Button,
     Segment,
   } from 'semantic-ui-react';
 
-import NoMatch from './NoMatch';
 import SearchBar from './SearchBar';
 import Questions from './Questions';
 
@@ -88,9 +87,10 @@ function Park({mobile=false}) {
                     // marginTop: mobile ? '0.5em' : '1em',
                     }}
                 />
+                <Label size={'large'} style={{backgroundColor: '#f0f0f0'}}> {park.location}</Label>
                 <Image 
                     style={{margin: 'auto', borderRadius: '3em', 
-                        marginBottom: '2em'}}
+                    marginBottom: '2em'}}
                     size='large'
                     src={`http://localhost:5000/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
@@ -119,8 +119,8 @@ function Park({mobile=false}) {
                     />
                     <Grid columns={1}>
                     <Grid.Column>
-                        <Segment size={'big'} content textAlign='center'>
-                            {park[selected.value]}
+                        <Segment size={'large'} content>
+                            <pre>{park[selected.value]}</pre>
                         </Segment>
                     </Grid.Column>
                 </Grid>
