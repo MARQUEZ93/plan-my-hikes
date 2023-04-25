@@ -15,15 +15,15 @@ const tips = (parkName) => {
 };
 
 const tough = (parkName) => {
-    return `I am in great physical shape. What is one of the toughest hikes in ${parkName} that is lesser known? Include hike duration & specific details for why this hike is demanding.`
+    return `What is one of the toughest hikes in ${parkName} that is lesser known? Include hike duration & specific details for why this hike is demanding.`
 }
 
 const schedule = (parkName) => {
-    return `Please provide a detailed itinerary for ${parkName} for 6 nights. Do not reply with line breaks. The itinerary must include overnight details, park entrance details, parking details, trail names & hike duration. If the park is too small for 6 nights, for example a park then can be done entirely in 1 day, it is okay if the schedule reflects that & is less than 6 nights.`
+    return `Please provide a detailed itinerary for ${parkName} for 6 nights. The itinerary must include overnight details, park entrance details, parking details, trail names & hike duration. If the park is too small for 6 nights, for example a park then can be done entirely in 1 day, it is okay if the schedule reflects that & is less than 6 nights.`
 };
 
 const camping = (parkName) => {
     return `What is the one of the best camping trails in ${parkName}? Include parking details, whether a reservation is necessary, hike duration & why is this trail is good for camping?`
 };
 
-export default { best, hidden_gem, busy, tips, tough, schedule, camping };
+module.exports = { best, hidden_gem, busy, tips, tough, schedule, camping };
