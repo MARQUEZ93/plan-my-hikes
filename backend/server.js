@@ -3,9 +3,20 @@ const app = express();
 const port = process.env.PORT || 5000; 
 const fs = require('fs');
 
+const path = require('path');
+const serveStatic = require('serve-static');
+
 const cors = require('cors');
 
 app.use(cors());
+
+const port = process.env.PORT || 5000;
+
+app.use(serveStatic(path.join(__dirname, 'build')));
+
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
 
 const { Pool } = require('pg');
 
@@ -16,12 +27,6 @@ const pool = new Pool({
   user: 'postgres',
   password: 'password',
 });
-
-app.use(express.static('public'));
-
-app.listen(5000, () => {
-  console.log('Server listening on port 5000');
-})
 
 app.get('/parks/:route', async (req, res) => {
   const route = req.params.route;
