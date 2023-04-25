@@ -532,7 +532,7 @@ const parks = [
     {
       title: 'Wrangell - St Elias National Park & Preserve (Alaska, United States)',
       name: 'Wrangell - St Elias National Park & Preserve',
-      route: 'wrangell_-_st_elias_national_park_&_preserve'
+      route: 'wrangell'
     },
     {
       title: 'Yellowstone National Park (Idaho, United States)',
