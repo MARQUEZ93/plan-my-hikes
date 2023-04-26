@@ -16,7 +16,7 @@ import Questions from './Questions';
 const options = [
     { key: '1', text: '7 Day Itinerary', value: 'schedule'},
     { key: '2', text: "Can't Miss Experience", value: 'best' },
-    { key: '3', text: 'Hidden Gem', value: 'gem' },
+    { key: '3', text: 'Hidden Gem', value: 'hidden_gem' },
     { key: '4', text: 'Camping', value: 'camping' },
     { key: '5', text: 'Busy Season', value: 'busy' },
     { key: '6', text: 'Toughest Hike', value: 'tough' },
@@ -26,7 +26,7 @@ const options = [
 function getQuestion(parkName, value){
     if (value === "best"){
         return "What is the one of the best experiences of " + parkName + "?";
-    } else if (value === "gem") {
+    } else if (value === "hidden_gem") {
         return "What is a hidden gem of  " + parkName + "?";
     } else if (value === "schedule"){
         return "Please provide a 6 night itinerary for " + parkName + "!";

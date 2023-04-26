@@ -10,7 +10,7 @@ const pool = new Pool({
 
 async function createRow(data) {
   const query = {
-    text: 'INSERT INTO parks (name, route, location, tips, gem, schedule, best, tough, camping, busy, id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
+    text: 'INSERT INTO parks (name, route, location, tips, hidden_gem, schedule, best, tough, camping, busy, id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
     values: [data.name, data.route, data.location, data.tips, data.gem, data.schedule, data.best, data.tough, data.camping, data.busy, data.id],
   };
 

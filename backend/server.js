@@ -10,8 +10,6 @@ const cors = require('cors');
 
 app.use(cors());
 
-const port = process.env.PORT || 5000;
-
 app.use(serveStatic(path.join(__dirname, 'build')));
 
 app.listen(port, () => {
@@ -30,7 +28,7 @@ const pool = new Pool({
 
 app.get('/parks/:route', async (req, res) => {
   const route = req.params.route;
-  pool.query('SELECT name, route, location, tough, gem, schedule, busy, camping, tips, best FROM parks WHERE route = $1', [route], (err, result) => {
+  pool.query('SELECT name, route, location, tough, hidden_gem, schedule, busy, camping, tips, best FROM parks WHERE route = $1', [route], (err, result) => {
     if (err) {
       res.status(500).send('Error executing query');
     } else if (result.rows.length === 0) {

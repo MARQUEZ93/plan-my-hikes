@@ -25,7 +25,7 @@ parks.parks.forEach(park => {
 
 async function createRow(data, id, location) {
     const query = {
-      text: 'INSERT INTO parks (name, route, location, tips, gem, schedule, best, tough, camping, busy, id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
+      text: 'INSERT INTO parks (name, route, location, tips, hidden_gem, schedule, best, tough, camping, busy, id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
       values: [data.name, data.route, location, data.tips, data.hidden_gem, data.schedule, data.best, data.tough, data.camping, data.busy, id],
     };
     try {
