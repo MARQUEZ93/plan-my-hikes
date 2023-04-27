@@ -3,14 +3,14 @@ const { Pool } = require('pg');
 // TODO: set ENVIRO variables here
 
 const pool = new Pool({
-    host: 'localhost',
-    port: 5432, // or your PostgreSQL port number
+    host: 'db', // postgres service 
+    port: 5432,
     database: 'pmh',
-    user: 'postgres',
+    user: 'admin',
     password: 'password',
   });
 
-const parks = require ('../data/json/parks');
+const parks = require ('../data/json/parks.json');
 
 // scrub way to set id
 let count = 0;
@@ -30,8 +30,8 @@ async function createRow(data, id, location) {
     };
     try {
       const result = await pool.query(query);
-      console.log(`Created ${result.rowCount} row(s)`);
+      console.log(`Created ${result} row(s)`);
     } catch (err) {
       console.error(err);
     }
-  }
+}

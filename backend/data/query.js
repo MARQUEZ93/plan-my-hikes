@@ -4,8 +4,6 @@ const _ = require('lodash');
 
 const { tips, best, tough, schedule, hidden_gem, camping, busy } = require('./prompts');
 
-const questions = [tips, best, tough, schedule, hidden_gem, camping, busy];
-
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
@@ -13,7 +11,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-const parks = require ('./parks');
+const parks = require ('./parks_array');
 
 const arg = process.argv[2];
 
@@ -23,7 +21,6 @@ async function prepJSONFile({name, title, route}){
 
   const existingFile = await fs.readFileSync('./data/json/parks.json', (err, data) => {
     if (err) throw err;
-    console.log(data);
   });
     // Parse the file contents into a JavaScript object
     const parksObject = JSON.parse(existingFile);

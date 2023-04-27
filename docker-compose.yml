@@ -3,14 +3,15 @@ version: '3'
 
 services:
   db:
-    image: postgres:15
+    image: postgres:14.7
     restart: always
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
       POSTGRES_DB: pmh
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
   backend:
@@ -18,25 +19,14 @@ services:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
-    image: "aemarquez1993/plan-my-hikes-backend"
     ports:
       - "5000:5000"
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgres://admin:passsword@db:5432/pmh
-  frontend:
-    restart: always
-    build:
-      context: ./client
-      dockerfile: ./Dockerfile
-    image: "aemarquez1993/plan-my-hikes-frontend"
-    ports:
-      - "3000:3000"
-    links:
-      - "backend"
-    environment:
-      NODE_ENV: production
-      REACT_APP_API_URL: http://web:3000
+      - DATABASE_URL=postgres://admin:password@db:5432/pmh
+    volumes: 
+      - ./client/build:/app/client/build
+      - ./backend:/app/backend
 volumes:
-  dbdata:
+  db-data:

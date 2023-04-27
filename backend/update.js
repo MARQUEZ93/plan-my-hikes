@@ -16,7 +16,7 @@ async function createRow(data) {
 
   try {
     const result = await pool.query(query);
-    console.log(`Created ${result.rowCount} row(s)`);
+    console.log(`Created ${result} row(s)`);
   } catch (err) {
     console.error(err);
   }

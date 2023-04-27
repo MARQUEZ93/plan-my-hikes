@@ -33,7 +33,7 @@ function getQuestion(parkName, value){
     } else if (value === "camping"){
         return "Where do you recommend to go camping in " + parkName + "?";
     } else if (value === "tips"){
-        return "Please provide me some tips for " + parkName + "?";
+        return "Please provide tips for " + parkName + "!";
     } else if (value === "busy"){
         return "What are the most crowded months to visit " + parkName + "?";
     } else if (value === "tough"){
@@ -54,13 +54,16 @@ function Park({mobile=false}) {
 
     const nav = useNavigate();
     const fetchParkData = () => {
-        fetch(`http://localhost:5000/parks/${name}`)
+        fetch(`/api/parks/${name}`)
           .then(response => {
             return response.json();
           })
           .then(data => {
             setPark(data);
-          }).catch(err => nav("/"));
+          }).catch(err => {
+              nav("/");
+            }
+            );
       };
 
     useEffect(() => {
@@ -92,7 +95,7 @@ function Park({mobile=false}) {
                     style={{margin: 'auto', borderRadius: '3em', 
                     marginBottom: '2em'}}
                     size='large'
-                    src={`http://localhost:5000/images/${park.route}.jpeg`} />
+                    src={`/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
                 <Container style={{backgroundColor: 

@@ -1,32 +1,38 @@
 const express = require('express');
 const app = express(); 
 const port = process.env.PORT || 5000; 
-const fs = require('fs');
 
 const path = require('path');
-const serveStatic = require('serve-static');
 
 const cors = require('cors');
 
 app.use(cors());
 
-app.use(serveStatic(path.join(__dirname, 'build')));
+//TODO consider un-installing cors
+
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: 'localhost',
+  host: 'db',
   port: 5432, // or your PostgreSQL port number
   database: 'pmh',
-  user: 'postgres',
+  user: 'admin',
   password: 'password',
 });
 
-app.get('/parks/:route', async (req, res) => {
+app.get('/api/parks/:route', async (req, res) => {
   const route = req.params.route;
   pool.query('SELECT name, route, location, tough, hidden_gem, schedule, busy, camping, tips, best FROM parks WHERE route = $1', [route], (err, result) => {
     if (err) {
@@ -40,16 +46,10 @@ app.get('/parks/:route', async (req, res) => {
   });
 });
 
-// app.get('/images/:filename', (req, res) => {
-//   const filename = req.params.filename;
-//   const imagePath = __dirname + '/images/' + filename;
-  
-//   fs.readFile(imagePath, (err, data) => {
-//     if (err) {
-//       res.status(404).send('Image not found');
-//     } else {
-//       res.writeHead(200, {'Content-Type': 'image/jpeg'});
-//       res.end(data);
-//     }
-//   });
-// });
+app.use('/images', express.static('public/images'));
+
+// Serve the React app on all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+

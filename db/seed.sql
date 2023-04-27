@@ -1,1 +1,0 @@
-\copy parks(name, location, route, tips, tough, best, schedule, camping, busy, hidden_gem) FROM 'parks.json' WITH (FORMAT JSON, ARRAY_ELEMENT_AS_ROW);

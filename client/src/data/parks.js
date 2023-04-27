@@ -232,7 +232,7 @@ const parks = [
     {
       title: 'Haleakalā National Park (Hawaii, United States)',
       name: 'Haleakalā National Park',
-      route: 'haleakalā_national_park'
+      route: 'haleakala_national_park'
     },
     {
       title: 'Hawaiʻi Volcanoes National Park (Hawaii, United States)',
