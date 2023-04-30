@@ -1,14 +1,19 @@
 const express = require('express');
 const app = express(); 
-const port = process.env.PORT || 5000; 
+const port = process.env.PORT || 3000; 
 
 const path = require('path');
 
 const cors = require('cors');
 
+//TODO consider un-installing cors
 app.use(cors());
 
-//TODO consider un-installing cors
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, "client/build")));
@@ -17,19 +22,14 @@ app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
-
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: 'db',
-  port: 5432, // or your PostgreSQL port number
-  database: 'pmh',
-  user: 'admin',
-  password: 'password',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD
 });
 
 app.get('/api/parks/:route', async (req, res) => {

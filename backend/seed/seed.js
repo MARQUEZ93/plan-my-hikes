@@ -1,14 +1,12 @@
 const { Pool } = require('pg');
 
-// TODO: set ENVIRO variables here
-
 const pool = new Pool({
-    host: 'db', // postgres service 
-    port: 5432,
-    database: 'pmh',
-    user: 'admin',
-    password: 'password',
-  });
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD
+});
 
 const parks = require ('../data/json/parks.json');
 
