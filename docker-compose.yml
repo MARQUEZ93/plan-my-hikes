@@ -18,15 +18,19 @@ services:
     restart: always
     build:
       context: ./backend
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgres://admin:password@db:5432/pmh
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: pmh
+      DB_USER: admin
+      DB_PASSWORD: password
+      PORT: 3000
     volumes: 
       - ./client/build:/app/client/build
-      - ./backend:/app/backend
 volumes:
   db-data:
