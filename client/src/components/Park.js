@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { useParams, useNavigate, redirect } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import {
     Container,
@@ -41,6 +41,8 @@ function getQuestion(parkName, value){
     }
 }
 
+const apiHost = process.env.API_HOST || "http://localhost:8080";
+
 function Park({mobile=false}) {
 
     const { name } = useParams();
@@ -54,7 +56,7 @@ function Park({mobile=false}) {
 
     const nav = useNavigate();
     const fetchParkData = () => {
-        fetch(`/api/parks/${name}`)
+        fetch(`${apiHost}/api/parks/${name}`)
           .then(response => {
             return response.json();
           })
@@ -95,7 +97,7 @@ function Park({mobile=false}) {
                     style={{margin: 'auto', borderRadius: '3em', 
                     marginBottom: '2em'}}
                     size='large'
-                    src={`/images/${park.route}.jpeg`} />
+                    src={`${apiHost}/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
                 <Container style={{backgroundColor: 

@@ -1,0 +1,23 @@
+# Exclude files and directories
+.git
+.idea
+*.pyc
+*.log
+.env
+
+# Exclude specific files
+docker-compose.yml
+README.md
+
+# Ignore files and directories in the root directory
+node_modules
+build
+.dockerignore
+
+# Ignore files and directories in the client directory
+app/client/node_modules
+app/client/build
+
+# Ignore files and directories in the backend directory
+app/backend/node_modules
+app/backend/dist

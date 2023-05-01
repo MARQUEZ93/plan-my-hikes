@@ -1,4 +1,4 @@
-FROM node:16.13.2
+FROM node:16-alpine
 
 LABEL version="1.0"
 LABEL description="This is the base docker image for the Plan My Hikes backend API."
@@ -11,6 +11,6 @@ RUN npm install --production
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["node", "server.js"]

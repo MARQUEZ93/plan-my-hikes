@@ -1,22 +1,10 @@
 const express = require('express');
 const app = express(); 
-const port = process.env.PORT || 3000; 
-
-const path = require('path');
+const port = process.env.PORT || 8080; 
 
 const cors = require('cors');
 
-//TODO consider un-installing cors
 app.use(cors());
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
-
-
-// Serve the static files from the React app
-app.use(express.static(path.join(__dirname, "client/build")));
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
@@ -47,9 +35,3 @@ app.get('/api/parks/:route', async (req, res) => {
 });
 
 app.use('/images', express.static('public/images'));
-
-// Serve the React app on all other routes
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
-

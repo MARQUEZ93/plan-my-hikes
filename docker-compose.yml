@@ -20,7 +20,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "8080:8080"
     depends_on:
       - db
     environment:
@@ -29,8 +29,17 @@ services:
       DB_NAME: pmh
       DB_USER: admin
       DB_PASSWORD: password
-      PORT: 3000
-    volumes: 
-      - ./client/build:/app/client/build
+      PORT: 8080
+  client:
+    restart: always
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment: 
+      API_HOST: http://localhost:8080
 volumes:
   db-data:
