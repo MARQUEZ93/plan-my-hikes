@@ -21,6 +21,7 @@ const pool = new Pool({
 });
 
 app.get('/api/parks/:route', async (req, res) => {
+  console.log("hitparksA");
   const route = req.params.route;
   pool.query('SELECT name, route, location, tough, hidden_gem, schedule, busy, camping, tips, best FROM parks WHERE route = $1', [route], (err, result) => {
     if (err) {
@@ -29,9 +30,27 @@ app.get('/api/parks/:route', async (req, res) => {
       res.status(404).send('Park not found');
     } else {
       const park = result.rows[0];
+      console.log("hitapi");
       res.send(park);
     }
   });
 });
+
+app.get('/parks/:route', async (req, res) => {
+  console.log("hitparksR");
+  const route = req.params.route;
+  pool.query('SELECT name, route, location, tough, hidden_gem, schedule, busy, camping, tips, best FROM parks WHERE route = $1', [route], (err, result) => {
+    if (err) {
+      res.status(500).send('Error executing query');
+    } else if (result.rows.length === 0) {
+      res.status(404).send('Park not found');
+    } else {
+      const park = result.rows[0];
+      console.log("hitparks");
+      res.send(park);
+    }
+  });
+});
+
 
 app.use('/images', express.static('public/images'));

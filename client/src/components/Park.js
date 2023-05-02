@@ -41,7 +41,7 @@ function getQuestion(parkName, value){
     }
 }
 
-const apiHost = process.env.API_HOST || "http://localhost:8080";
+const apiHost = process.env.API_HOST || "/api";
 
 function Park({mobile=false}) {
 
@@ -56,17 +56,19 @@ function Park({mobile=false}) {
 
     const nav = useNavigate();
     const fetchParkData = () => {
-        fetch(`${apiHost}/api/parks/${name}`)
+        fetch(`${apiHost}/parks/${name}`)
           .then(response => {
             return response.json();
           })
           .then(data => {
             setPark(data);
+            console.log(data);
           }).catch(err => {
+              console.log(err);
               nav("/");
             }
             );
-      };
+    };
 
     useEffect(() => {
         fetchParkData();
