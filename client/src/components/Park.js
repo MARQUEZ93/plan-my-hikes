@@ -105,8 +105,8 @@ function Park({mobile=false}) {
                     />
                     <Grid columns={1}>
                     <Grid.Column>
-                        <Segment size={'large'} content>
-                            <pre>{park[selected.value]}</pre>
+                        <Segment size={'large'} content={park[selected.value]}>
+                            {/* <pre>{park[selected.value]}</pre> */}
                         </Segment>
                     </Grid.Column>
                 </Grid>
