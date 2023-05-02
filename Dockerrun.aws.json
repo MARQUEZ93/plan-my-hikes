@@ -4,7 +4,7 @@
       {
         "name": "backend",
         "image": "aemarquez1993/plan-my-hikes-backend",
-        "hostname": "api",
+        "hostname": "backend",
         "essential": false,
         "memory": 128
       },
