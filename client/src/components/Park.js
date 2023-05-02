@@ -1,14 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 
-import {
-    Container,
-    Header,
-    Grid,
-    Label,
-    Image,
-    Segment,
-  } from 'semantic-ui-react';
+import { Container, Header, Grid, Label, Image, Segment } from 'semantic-ui-react';
 
 import SearchBar from './SearchBar';
 import Questions from './Questions';
@@ -21,7 +14,7 @@ const options = [
     { key: '5', text: 'Busy Season', value: 'busy' },
     { key: '6', text: 'Toughest Hike', value: 'tough' },
     { key: '7', text: 'Tips', value: 'tips' },
-  ];
+];
 
 function getQuestion(parkName, value){
     if (value === "best"){
@@ -48,7 +41,8 @@ function Park({mobile=false}) {
     const { name } = useParams();
     const [park, setPark] = useState(null);
 
-    const [selected, setSelected] = useState({ key: '1', text: '7 Day Itinerary', value: 'schedule'});
+    const [selected, setSelected] = 
+        useState({ key: '1', text: '7 Day Itinerary', value: 'schedule'});
 
     const handleButtonClick = (option) => {
         setSelected(option);
@@ -59,24 +53,13 @@ function Park({mobile=false}) {
         fetch(`${apiHost}/parks/${name}`)
           .then(response => {
             return response.json();
-          })
-          .then(data => {
-            setPark(data);
-            console.log(data);
-          }).catch(err => {
-              console.log(err);
-              nav("/");
-            }
-            );
+          }).then(data => setPark(data) ).catch(err => nav("/") );
     };
 
-    useEffect(() => {
-        fetchParkData();
-    }, [name]);
+    useEffect(() => fetchParkData(), [name]);
     
-    if (!park){
-        return <div>Loading...</div>;
-    }
+    if (!park){return (<div>Loading...</div>);}
+
     return (
         <Container style={{backgroundColor: 
             '#F0F0F0', paddingBottom: '7em',
@@ -90,11 +73,10 @@ function Park({mobile=false}) {
                     color: '#1b1c1d',
                     fontSize: mobile ? '1.25em' : '2.5em',
                     fontWeight: 'normal',
-                    // marginBottom: mobile ?  '0.25em' : '.5em',
-                    // marginTop: mobile ? '0.5em' : '1em',
                     }}
                 />
-                <Label size={'large'} style={{backgroundColor: '#f0f0f0'}}> {park.location}</Label>
+                <Label size={'large'} style={{backgroundColor: '#f0f0f0'}}>
+                    {park.location}</Label>
                 <Image 
                     style={{margin: 'auto', borderRadius: '3em', 
                     marginBottom: '2em'}}
@@ -108,9 +90,7 @@ function Park({mobile=false}) {
                     <Header
                         as='h3'
                         content={'Hey ChatGPT...' }
-                        // inverted
                         style={{
-                        // color: '#10a37f',
                         fontSize: mobile ? '1.25em' : '2.5em',
                         fontWeight: 'bold',
                         }}
@@ -119,7 +99,6 @@ function Park({mobile=false}) {
                         as='h5'
                         content={getQuestion(park.name, selected.value)}
                         style={{
-                        // color: '#10a37f',
                         fontSize: mobile ? '1em' : '2em',
                         paddingBottom: '2em',
                         }}
