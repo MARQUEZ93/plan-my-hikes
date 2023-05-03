@@ -7,20 +7,24 @@ services:
     mem_limit: 128m
     hostname: backend
     environment:
-      DB_HOST: $DB_HOST
-      DB_PORT: $DB_PORT
-      DB_NAME: $DB_NAME
-      DB_USER: $DB_USER
-      DB_PASSWORD: $DB_PASSWORD
-      PORT: $PORT
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      PORT: ${PORT}
   client:
     restart: always
     mem_limit: 128m
     hostname: client
     image: "aemarquez1993/plan-my-hikes-client"
     environment:
-      API_HOST: $API_HOST
+      API_HOST: ${API_HOST}
   nginx:
+    restart: always
+    depends_on:
+        - client
+        - backend
     image: "aemarquez1993/plan-my-hikes-nginx"
     mem_limit: 128m
     hostname: nginx
