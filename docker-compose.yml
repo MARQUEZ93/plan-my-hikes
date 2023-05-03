@@ -3,12 +3,9 @@ version: '3'
 
 services:
   backend:
-    restart: always
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
+    image: "aemarquez1993/aemarquez1993/plan-my-hikes-backend"
+    mem_limit: 128m
+    hostname: backend
     environment:
       DB_HOST: $DB_HOST
       DB_PORT: $DB_PORT
@@ -16,27 +13,17 @@ services:
       DB_USER: $DB_USER
       DB_PASSWORD: $DB_PASSWORD
       PORT: $PORT
-    volumes:
-      - /app/node_modules
-      - ./backend:/app
   client:
     restart: always
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
+    mem_limit: 128m
+    hostname: client
+    image: "aemarquez1993/plan-my-hikes-client"
     environment:
       API_HOST: $API_HOST
-    volumes:
-      - /app/node_modules
-      - ./client:/app
+      WDS_SOCKET_PORT: 0
   nginx:
-    restart: always
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
+    image: "aemarquez1993/plan-my-hikes-nginx"
+    mem_limit: 128m
+    hostname: nginx
     ports:
       - "80:80"
