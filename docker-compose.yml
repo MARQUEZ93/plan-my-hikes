@@ -3,7 +3,7 @@ version: '3'
 
 services:
   backend:
-    image: "aemarquez1993/aemarquez1993/plan-my-hikes-backend"
+    image: "aemarquez1993/plan-my-hikes-backend"
     mem_limit: 128m
     hostname: backend
     environment:
