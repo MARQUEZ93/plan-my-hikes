@@ -1,0 +1,58 @@
+
+version: '3'
+
+services:
+  db:
+    image: postgres:14.7
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pmh
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+  backend:
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: pmh
+      DB_USER: admin
+      DB_PASSWORD: password
+      PORT: 5000
+    volumes:
+      - /app/node_modules
+      - ./backend:/app
+  client:
+    restart: always
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      API_HOST: /api
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    ports:
+      - "81:80"
+volumes:
+  db-data:
