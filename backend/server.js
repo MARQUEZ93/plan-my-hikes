@@ -30,11 +30,14 @@ app.get('/api/parks/:route', async (req, res) => {
   const route = req.params.route;
   pool.query('SELECT name, route, location, tough, hidden_gem, schedule, busy, camping, tips, best FROM parks WHERE route = $1', [route], (err, result) => {
     if (err) {
+      console.log(err);
       res.status(500).send('Error executing query');
     } else if (result.rows.length === 0) {
+      console.log("Not found");
       res.status(404).send('Park not found');
     } else {
       const park = result.rows[0];
+      console.log(park);
       res.send(park);
     }
   });
