@@ -252,7 +252,7 @@ const parks = [
     {
       title: 'Iguazú National Park (Argentina)',
       name: 'Iguazú National Park',
-      route: 'iguazú_national_park'
+      route: 'iguazu_national_park'
     },
     {
       title: 'Indiana Dunes National Park (Indiana, United States)',
