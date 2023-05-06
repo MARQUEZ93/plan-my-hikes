@@ -3,9 +3,14 @@
   "name": "Plan My Hikes",
   "icons": [
     {
-      "src": "fav.ico",
+      "src": "favicon.png",
       "sizes": "512x512 64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "512x512 64x64 32x32 24x24 16x16",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
