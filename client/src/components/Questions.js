@@ -61,9 +61,10 @@ const Questions = ({handleButtonClick, selected}) => {
                 </>
         );
     } else {
+        // mobile
         return (<>
                     <Button.Group widths='3'>
-                            {options.slice(0,3).map((option) => (
+                            {options.slice(1,4).map((option) => (
                                 <Button
                                     disabled={selected.value === option.value}
                                     key={option.key}
@@ -75,7 +76,7 @@ const Questions = ({handleButtonClick, selected}) => {
                         </Button.Group>
                         <Divider fitted/>
                         <Button.Group widths='3'>
-                            {options.slice(3,6).map((option) => (
+                            {options.slice(4,7).map((option) => (
                                 <Button
                                     disabled={selected.value === option.value}
                                     key={option.key}
@@ -88,11 +89,11 @@ const Questions = ({handleButtonClick, selected}) => {
                         <Divider fitted />
                         <Button.Group fluid widths='1'>
                             <Button
-                                disabled={selected.value === options[6].value}
-                                key={options[6].key}
-                                onClick={() => handleButtonClick(options[6])}
+                                disabled={selected.value === options[0].value}
+                                key={options[0].key}
+                                onClick={() => handleButtonClick(options[0])}
                             >
-                                {options[6].text}
+                                {options[0].text}
                             </Button>
                         </Button.Group>
                 </>
