@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Container,
   Segment,
 } from 'semantic-ui-react';
 import MainMenu from './MainMenu';

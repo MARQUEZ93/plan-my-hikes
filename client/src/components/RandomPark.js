@@ -1,12 +1,6 @@
 import {
     Button,
-    Container,
-    Header,
     Icon,
-    Image,
-    Item,
-    Menu,
-    Segment,
   } from 'semantic-ui-react';
 
 import parks from "../data/parks";

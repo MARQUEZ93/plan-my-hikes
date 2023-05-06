@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react';
+import { Search, Grid } from 'semantic-ui-react';
 import { Navigate } from "react-router-dom";
 
 import parks from "../data/parks";
