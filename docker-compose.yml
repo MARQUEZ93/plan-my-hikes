@@ -19,7 +19,7 @@ services:
     hostname: client
     image: "aemarquez1993/plan-my-hikes-client"
     environment:
-      API_HOST: ${API_HOST}
+      REACT_APP_API_HOST: ${REACT_APP_API_HOST}
   nginx:
     restart: always
     depends_on:

@@ -34,7 +34,7 @@ function getQuestion(parkName, value){
     }
 }
 
-const apiHost = process.env.API_HOST || "/api";
+const apiHost = process.env.REACT_APP_API_HOST || "/api";
 
 function Park({mobile=false}) {
 
@@ -53,7 +53,7 @@ function Park({mobile=false}) {
         fetch(`${apiHost}/parks/${name}`)
           .then(response => {
             return response.json();
-          }).then(data => setPark(data) ).catch(err => nav("/") );
+          }).then(data => setPark(data) ).catch(err => nav("/"));
     };
 
     useEffect(() => fetchParkData(), [name]);
