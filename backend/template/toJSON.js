@@ -3,59 +3,70 @@ const _ = require('lodash');
 
 const openai = require ('./openaiConfig');
 
-const best = (item) => {
-    return `What is the one of the single best experiences of ${item}?`
+/*  Alter the questions below. They will be iterated across a list of items.
+    For example, the below questions are used for a list of national parks.
+    The key & item, for example "best" AND "big bend national park", will be used the JSON key for the results. 
+    In addition, the key & item will later used in the ./toPostgres file to set Database column names & as a Database row identifier.
+*/
+const questions = (item) => {
+    return {
+        "best": `What is the one of the single best experiences of ${item}?`,
+        "hidden_gem": `What is a hidden gem of ${item}?`,
+        "crowded": `What are the most crowded months to visit ${item}?`
+    }
 };
 
-const hiddenGem = (item) => {
-    return `What is a hidden gem of ${item}?`
-};
-
-const crowded = (item) => {
-    return `What are the most crowded months to visit ${item}?`
-};
-
+/*  Alter the items below. They will be iterated across the questions above. */
 const items = ['Big Bend National Park', 'Acadia National Park', 'Los Glaciares National Park'];
+
 
 items.forEach(item=>toJSON(item));
 
-async function toJSON(prompt){
+async function toJSON(item){
+    const itemQuestions = questions(item);
+    const questionsKeys = Object.keys(itemQuestions);
+    let count = 0;
+    const results = {};
+    while (count < questionsKeys.length){
+        const prompt = itemQuestions[questionsKeys[count]];
+        results[questionsKeys[count]] = await query(prompt);
+        count++;
+    }
 
-    const existingFile = await fs.appendFileSync('./data.json', (err, data) => {});
+    const jsonFile = await fs.readFileSync('./data.json', (err, data) => {});
 
     // Parse the file contents into a JavaScript object
-    const parksObject = JSON.parse(existingFile);
+    const itemsObject = JSON.parse(jsonFile);
 
-    const bestData = await getData(best(name));
-    const hiddenGemData = await getData(hiddenGem(name));
-    const busyData = await getData(busy(name));
+    const resultsKeys = Object.keys(results);
 
-    const newPark = {
-      name: name,
-      hiddenGem: hiddenGemData,
-      best: bestData,
-      busy: busyData
-    };
+    const newItem = { name: item };
 
-    parksObject.parks.push(newPark);
+    let resultsCount = 0;
 
-    const newData = JSON.stringify(parksObject, null, 2);
+    while (resultsCount < resultsKeys.length){
+        newItem[resultsKeys[resultsCount]] = results[resultsKeys[resultsCount]];
+        resultsCount++;
+    }
+
+    itemsObject.items.push(newItem);
+
+    const newData = JSON.stringify(itemsObject, null, 2);
 
     fs.writeFileSync('./data.json', newData, err => {
         if (err) {
             console.error(err);
-            return;
         }
-        console.log('New park added to parks.json');
+        console.log('New item added to data.json');
     });
 };
 
-async function getData(prompt) {
+async function query(prompt) {
     try {
         const completion = await openai.createChatCompletion({
           model: "gpt-3.5-turbo",
           messages: [{ role: "user", content: prompt }],
-          temperature: 0
+          max_tokens: 4050
         });
         return completion.data.choices[0].message.content;
     } catch (error) {
