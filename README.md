@@ -1,8 +1,6 @@
-# [Plan My Hikes] (https://www.planmyhikes.com)
+# [Plan My Hikes](https://www.planmyhikes.com)
 
 <p align="center"><img src="https://i.imgur.com/Im7naBI.png" width="800px"/></p>
-<br><br>
-<p align="center"><img src="https://i.imgur.com/Gnb5Tlo.png" width="800px"/></p>
 
 ## About
 
