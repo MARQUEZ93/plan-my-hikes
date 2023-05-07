@@ -250,8 +250,8 @@ const parks = [
       route: 'huangshan_national_park'
     },
     {
-      title: 'Iguazú National Park (Argentina)',
-      name: 'Iguazú National Park',
+      title: 'Iguazu National Park (Argentina)',
+      name: 'Iguazu National Park',
       route: 'iguazu_national_park'
     },
     {

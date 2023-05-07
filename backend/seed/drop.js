@@ -17,7 +17,7 @@ async function removeAllParks() {
     } finally {
       client.release();
     }
-  }
+}
   
   // call the function to remove all rows from the "parks" table
   removeAllParks().catch(err => console.error(err));
