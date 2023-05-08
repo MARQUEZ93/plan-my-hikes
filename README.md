@@ -19,7 +19,7 @@ Deploy occurs on every merged pull request on the main branch. I send my zipped 
 #### Nginx
 1) I added a Nginx server to my React Frontend Container. This listens on port 3000 & serves production assets from npm run build. 
 
-2) I forced HTTPS over HTTP in my default.conf 
+2) I forced HTTPS over HTTP in my default.conf for my application Nginx server.
 
 ### Commands
 

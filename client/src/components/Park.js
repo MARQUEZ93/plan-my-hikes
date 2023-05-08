@@ -36,7 +36,7 @@ function getQuestion(parkName, value){
 
 const apiHost = process.env.REACT_APP_API_HOST || "/api";
 
-function Park({mobile=false}) {
+function Park({isMobile=false}) {
 
     const { name } = useParams();
     const [park, setPark] = useState(null);
@@ -71,7 +71,7 @@ function Park({mobile=false}) {
                     inverted
                     style={{
                     color: '#1b1c1d',
-                    fontSize: mobile ? '1.25em' : '2.5em',
+                    fontSize: isMobile ? '1.25em' : '2.5em',
                     fontWeight: 'normal',
                     }}
                 />
@@ -91,7 +91,7 @@ function Park({mobile=false}) {
                         as='h3'
                         content={'Hey ChatGPT...' }
                         style={{
-                        fontSize: mobile ? '1.25em' : '2.5em',
+                        fontSize: isMobile? '1.25em' : '2.5em',
                         fontWeight: 'bold',
                         }}
                     />
@@ -99,14 +99,14 @@ function Park({mobile=false}) {
                         as='h5'
                         content={getQuestion(park.name, selected.value)}
                         style={{
-                        fontSize: mobile ? '1em' : '2em',
+                        fontSize: isMobile ? '1em' : '2em',
                         paddingBottom: '2em',
                         }}
                     />
                     <Grid columns={1}>
                     <Grid.Column>
-                        <Segment size={'large'} content={park[selected.value]}>
-                            {/* <pre>{park[selected.value]}</pre> */}
+                        <Segment size={'large'}>
+                            <pre>{park[selected.value]}</pre>
                         </Segment>
                     </Grid.Column>
                 </Grid>

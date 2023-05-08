@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
 import logo from '../images/bigger.svg';
 
 function MainMenu({isMobile=false}){
-    // if (isMobile) {
-    //     return (
-    //         <Menu widths='1' borderless pointing size='large'>
-    //             <Link to="/"><Menu.Item as='a' style={{margin:'auto'}}>
-    //                 <Image size='small' src={logo} />
-    //             </Menu.Item></Link>
-    //         </Menu>
-    //     );
-    // }
+    if (isMobile) {
+        return (
+            <Menu widths='1' borderless pointing size='large'>
+                <Link to="/"><Menu.Item as='a' style={{margin:'auto'}}>
+                    <Image size='small' src={logo} />
+                </Menu.Item></Link>
+            </Menu>
+        );
+    }
     return (<Menu
               pointing
               secondary
