@@ -81,12 +81,12 @@ function Park({isMobile=false}) {
                     style={{ margin: 'auto', borderRadius: '3em', 
                         marginBottom: '2em'
                     }}
-                    size= {isMobile ? 'small' : 'large'}
+                    size= {isMobile ? 'small' : 'medium'}
                     src={`${apiHost}/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
                 <Container style={{backgroundColor: 
-            '#F0F0F0', marginTop: '2em', paddingTop: '3em',
+            '#F0F0F0', marginTop: '2em', paddingTop: '2em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
                     <Header
                         as='h3'
@@ -101,15 +101,15 @@ function Park({isMobile=false}) {
                         content={getQuestion(park.name, selected.value)}
                         style={{
                         fontSize: isMobile ? '1.25em' : '2em',
-                        paddingBottom: '2em',
+                        paddingBottom: '1em',
                         }}
                     />
                     <Grid columns={1}>
-                    <Grid.Column>
-                        <Segment size={'large'} content={park[selected.value]}>
-                            {/* <pre>{park[selected.value]}</pre> */}
-                        </Segment>
-                    </Grid.Column>
+                        <Grid.Column>
+                            <Segment size={'large'} content={park[selected.value]}>
+                                {/* <pre>{park[selected.value]}</pre> */}
+                            </Segment>
+                        </Grid.Column>
                 </Grid>
                 </Container>
         </Container>
