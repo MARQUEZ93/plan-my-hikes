@@ -64,7 +64,7 @@ function Park({isMobile=false}) {
         <Container style={{backgroundColor: 
             '#F0F0F0', paddingBottom: '6em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
-                <SearchBar />
+                <SearchBar isMobile={isMobile}/>
                 <Header
                     as='h1'
                     content={park.name}

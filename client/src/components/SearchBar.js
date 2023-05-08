@@ -7,7 +7,7 @@ import parks from "../data/parks";
 
 import { initialState, parksReducer } from '../utils/parksReducer';
 
-function ParkSearchBar() {
+function SearchBar({isMobile=false}) {
 
   const [state, dispatch] = useReducer(parksReducer, initialState);
   const { results, value } = state;
@@ -47,7 +47,7 @@ function ParkSearchBar() {
         <Grid.Column textAlign='center'>
           <Search
             fluid
-            size={'mini'}
+            size={isMobile ? 'small': 'big'}
             // style={{textAlign: 'center', margin: 'auto'}}
             // input={{ fluid: true }}
             placeholder="Search for a park..."
@@ -72,4 +72,4 @@ function ParkSearchBar() {
   );
 }
 
-export default ParkSearchBar;
+export default SearchBar;
