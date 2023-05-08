@@ -180,9 +180,9 @@ const parks = [
       route: 'glacier_national_park'
     },
     {
-      title: 'Göreme National Park (Turkey)',
-      name: 'Göreme National Park',
-      route: 'göreme_national_park'
+      title: 'Goreme National Park (Turkey)',
+      name: 'Goreme National Park',
+      route: 'goreme_national_park'
     },
     {
       title: 'Gran Paradiso National Park (Italy)',
@@ -420,9 +420,9 @@ const parks = [
       route: 'plitvice_lakes_national_park'
     },
     {
-      title: 'Pyrénées National Park (France)',
-      name: 'Pyrénées National Park',
-      route: 'pyrénées_national_park'
+      title: 'Pyrenees National Park (France)',
+      name: 'Pyrenees National Park',
+      route: 'pyrenees_national_park'
     },
     {
       title: 'Rocky Mountain National Park (Colorado, United States)',
