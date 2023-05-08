@@ -17,7 +17,7 @@ const RandomPark = ({isMobile=false}) => {
         onClick={onClick}
         style={{marginTop: isMobile ? '1.5em': '2em', 
         marginBottom: isMobile ? '1.5em' : '2em',
-            fontFamily: 'Inconsolata'}} primary size='large'>
+            fontFamily: 'Inconsolata'}} primary size={isMobile ? 'small':'big'}>
         Choose a National Park for me!  
         <Icon corner='top right' name='find'/>
     </Button>);
