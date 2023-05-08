@@ -78,9 +78,10 @@ function Park({isMobile=false}) {
                 <Label size={'large'} style={{backgroundColor: '#f0f0f0'}}>
                     {park.location}</Label>
                 <Image 
-                    style={{margin: 'auto', borderRadius: '3em', 
-                    marginBottom: '2em'}}
-                    size='large'
+                    style={{ margin: 'auto', borderRadius: '3em', 
+                        marginBottom: '2em'
+                    }}
+                    size= {isMobile ? 'medium' : 'large'}
                     src={`${apiHost}/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
@@ -91,7 +92,7 @@ function Park({isMobile=false}) {
                         as='h3'
                         content={'Hey ChatGPT...' }
                         style={{
-                        fontSize: isMobile? '1.25em' : '2.5em',
+                        fontSize: isMobile? '1.75em' : '2.5em',
                         fontWeight: 'bold',
                         }}
                     />
@@ -99,14 +100,14 @@ function Park({isMobile=false}) {
                         as='h5'
                         content={getQuestion(park.name, selected.value)}
                         style={{
-                        fontSize: isMobile ? '1em' : '2em',
+                        fontSize: isMobile ? '1.25em' : '2em',
                         paddingBottom: '2em',
                         }}
                     />
                     <Grid columns={1}>
                     <Grid.Column>
-                        <Segment size={'large'}>
-                            <pre>{park[selected.value]}</pre>
+                        <Segment size={'large'} content={park[selected.value]}>
+                            {/* <pre>{park[selected.value]}</pre> */}
                         </Segment>
                     </Grid.Column>
                 </Grid>

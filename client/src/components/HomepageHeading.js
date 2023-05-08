@@ -3,7 +3,7 @@ import { Container, Header } from 'semantic-ui-react';
 import SearchHikes from './SearchHikes';
 import RandomPark from './RandomPark';
 
-const HomepageHeading = ({ mobile=false }) => {
+const HomepageHeading = ({ isMobile=false }) => {
     return (
         <Container text style={{paddingBottom: '10em', textAlign:'center'}}>
             <Header
@@ -12,14 +12,14 @@ const HomepageHeading = ({ mobile=false }) => {
                 inverted
                 style={{
                   color: '#1b1c1d',
-                  fontSize: mobile ? '1.5em' : '3em',
+                  fontSize: false ? '2.5em' : '3em',
                   fontWeight: 'normal',
-                  marginBottom: mobile ?  '0.25em' : '.5em',
-                  marginTop: mobile ? '0.5em' : '1em',
+                  marginBottom: false ?  '0.4em' : '.5em',
+                  marginTop: false ? '0.8em' : '1em',
                 }}
             />
-            <SearchHikes />
-            <RandomPark />
+            <SearchHikes isMobile/>
+            <RandomPark isMobile />
         </Container>
     );
 };
