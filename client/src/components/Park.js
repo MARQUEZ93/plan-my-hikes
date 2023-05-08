@@ -59,6 +59,10 @@ function Park({isMobile=false}) {
     useEffect(() => fetchParkData(), [name]);
     
     if (!park){return (<div>Loading...</div>);}
+    let usePre = false;
+    if (selected.value === 'schedule' || selected.value === 'tips'){
+        usePre = true;
+    }
 
     return (
         <Container style={{backgroundColor: 
@@ -81,12 +85,12 @@ function Park({isMobile=false}) {
                     style={{ margin: 'auto', borderRadius: '3em', 
                         marginBottom: '2em'
                     }}
-                    size= {isMobile ? 'small' : 'medium'}
+                    size= {'medium'}
                     src={`${apiHost}/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
                 <Container style={{backgroundColor: 
-            '#F0F0F0', marginTop: '2em', paddingTop: '2em',
+            '#F0F0F0', marginTop: isMobile ? '.5em' : '2em', paddingTop: isMobile ? '1em': '2em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
                     <Header
                         as='h3'
@@ -106,9 +110,11 @@ function Park({isMobile=false}) {
                     />
                     <Grid columns={1}>
                         <Grid.Column>
-                            <Segment size={'large'} content={park[selected.value]}>
-                                {/* <pre>{park[selected.value]}</pre> */}
-                            </Segment>
+                            {
+                                usePre ? (<Segment size={'large'}>
+                                <pre style={{ whiteSpace: 'pre-wrap' }}>{park[selected.value]}</pre>
+                            </Segment>) : <Segment size={'large'} content={park[selected.value]}></Segment>
+                            }
                         </Grid.Column>
                 </Grid>
                 </Container>
