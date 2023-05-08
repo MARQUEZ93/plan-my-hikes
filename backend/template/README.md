@@ -24,9 +24,10 @@ Alter the list of prompts to ask Chat GPT whatever you want.
 
 ##### Save Results to JSON
 
-`node toJSON.js` to save results to a data.csv file & corresponding prompts to a prompts.csv file
+`node toJSON.js` to save results to a data.csv file & corresponding prompts to a prompts.csv file. If you altered the key names (for example, you changed the  best, hidden_gem or crowded keys, you will have to make those changes in the toPostgres.js file)
 
 ##### Save JSON Results to Postgres (Must save results to JSON first^)
 
-`node toPostgres.js` to save results to a Postgres database
+`node toPostgres.js` to save results to a Postgres database. You will have to run the command first to create your Postgres table. 
+Then read the instructions in the file to uncomment code that will seed the results from the ./data.json file to your newly created table. Don't forget to change column names etc. if you changed the keys in the ./toJSON.js file. The JSON file is especially usefully if you want to seed this data on production. 
 

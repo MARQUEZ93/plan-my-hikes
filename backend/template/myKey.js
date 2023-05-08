@@ -1,1 +1,1 @@
-module.exports = "Your api key here";
+module.exports = "Your Open AI API key here";
