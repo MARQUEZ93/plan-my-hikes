@@ -70,13 +70,14 @@ function Park({isMobile=false}) {
                     content={park.name}
                     inverted
                     style={{
-                    color: '#1b1c1d',
-                    fontSize: isMobile ? '1.25em' : '2.5em',
-                    fontWeight: 'normal',
+                        color: '#1b1c1d',
+                        fontSize: isMobile ? '1.25em' : '2.5em',
+                        fontWeight: 'normal',
                     }}
                 />
-                <Label size={'large'} style={{backgroundColor: '#f0f0f0'}}>
-                    {park.location}</Label>
+                <Label size={isMobile ? 'medium': 'large'} style={{backgroundColor: '#f0f0f0'}}>
+                    {park.location}
+                </Label>
                 <Image 
                     style={{ margin: 'auto', borderRadius: '3em', 
                         marginBottom: '2em'
@@ -85,8 +86,8 @@ function Park({isMobile=false}) {
                     src={`${apiHost}/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
-                <Container style={{backgroundColor: 
-            '#F0F0F0', marginTop: isMobile ? '.5em' : '2em', paddingTop: isMobile ? '1em': '2em',
+                <Container style={{ backgroundColor: 
+            '#F0F0F0', marginTop: isMobile ? '.5em' : '2em', paddingTop: isMobile ? '1.25em': '2em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
                     <Header
                         as='h3'
@@ -100,8 +101,8 @@ function Park({isMobile=false}) {
                         as='h5'
                         content={getQuestion(park.name, selected.value)}
                         style={{
-                        fontSize: isMobile ? '1.25em' : '2em',
-                        paddingBottom: '1em',
+                            fontSize: isMobile ? '1.25em' : '2em',
+                            paddingBottom: '1em',
                         }}
                     />
                     <Grid columns={1}>
