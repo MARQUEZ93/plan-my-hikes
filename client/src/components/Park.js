@@ -8,7 +8,7 @@ import Questions from './Questions';
 
 const options = [
     { key: '1', text: '7 Day Itinerary', value: 'schedule'},
-    { key: '2', text: "Can't Miss Experience", value: 'best' },
+    { key: '2', text: "Best Experience", value: 'best' },
     { key: '3', text: 'Hidden Gem', value: 'hidden_gem' },
     { key: '4', text: 'Camping', value: 'camping' },
     { key: '5', text: 'Busy Season', value: 'busy' },
@@ -59,10 +59,6 @@ function Park({isMobile=false}) {
     useEffect(() => fetchParkData(), [name]);
     
     if (!park){return (<div>Loading...</div>);}
-    let usePre = false;
-    if (selected.value === 'schedule' || selected.value === 'tips'){
-        usePre = true;
-    }
 
     return (
         <Container style={{backgroundColor: 
@@ -74,13 +70,14 @@ function Park({isMobile=false}) {
                     content={park.name}
                     inverted
                     style={{
-                    color: '#1b1c1d',
-                    fontSize: isMobile ? '1.25em' : '2.5em',
-                    fontWeight: 'normal',
+                        color: '#1b1c1d',
+                        fontSize: isMobile ? '1.25em' : '2.5em',
+                        fontWeight: 'normal',
                     }}
                 />
-                <Label size={'large'} style={{backgroundColor: '#f0f0f0'}}>
-                    {park.location}</Label>
+                <Label size={isMobile ? 'medium': 'large'} style={{backgroundColor: '#f0f0f0'}}>
+                    {park.location}
+                </Label>
                 <Image 
                     style={{ margin: 'auto', borderRadius: '3em', 
                         marginBottom: '2em'
@@ -89,8 +86,8 @@ function Park({isMobile=false}) {
                     src={`${apiHost}/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
-                <Container style={{backgroundColor: 
-            '#F0F0F0', marginTop: isMobile ? '.5em' : '2em', paddingTop: isMobile ? '1em': '2em',
+                <Container style={{ backgroundColor: 
+            '#F0F0F0', marginTop: isMobile ? '.5em' : '2em', paddingTop: isMobile ? '1.25em': '2em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
                     <Header
                         as='h3'
@@ -104,17 +101,15 @@ function Park({isMobile=false}) {
                         as='h5'
                         content={getQuestion(park.name, selected.value)}
                         style={{
-                        fontSize: isMobile ? '1.25em' : '2em',
-                        paddingBottom: '1em',
+                            fontSize: isMobile ? '1.25em' : '2em',
+                            paddingBottom: '1em',
                         }}
                     />
                     <Grid columns={1}>
                         <Grid.Column>
-                            {
-                                usePre ? (<Segment size={'large'}>
+                            <Segment size={'large'}>
                                 <pre style={{ whiteSpace: 'pre-wrap' }}>{park[selected.value]}</pre>
-                            </Segment>) : <Segment size={'large'} content={park[selected.value]}></Segment>
-                            }
+                            </Segment>
                         </Grid.Column>
                 </Grid>
                 </Container>

@@ -16,7 +16,7 @@ import React,{useState,useEffect} from 'react';
 
 const options = [
     { key: '1', text: 'Seven Day Itinerary', value: 'schedule'},
-    { key: '2', text: "Can't Miss Experience", value: 'best' },
+    { key: '2', text: "Best Experience", value: 'best' },
     { key: '3', text: 'Hidden Gem', value: 'hidden_gem' },
     { key: '4', text: 'Camping', value: 'camping' },
     { key: '5', text: 'Busy Season', value: 'busy' },
