@@ -61,7 +61,6 @@ const Questions = ({handleButtonClick, selected}) => {
                 </>
         );
     } else {
-        // mobile
         return (<>
                     <Button.Group widths='3'>
                             {options.slice(1,4).map((option) => (

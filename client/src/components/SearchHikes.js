@@ -7,7 +7,7 @@ import parks from "../data/parks";
 
 import { initialState, parksReducer } from '../utils/parksReducer';
 
-function SearchHikes({mobile = false, size = 'massive'}) {
+function SearchHikes({isMobile = false, size = 'massive'}) {
   const [state, dispatch] = React.useReducer(parksReducer, initialState);
   const { loading, results, value } = state;
 

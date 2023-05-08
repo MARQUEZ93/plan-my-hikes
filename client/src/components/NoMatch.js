@@ -7,13 +7,13 @@ import {
 
 import SearchBar from './SearchBar';
 
-function NoMatch({mobile = false}) {
+function NoMatch({isMobile = false}) {
     return ( <Container text style={{backgroundColor: 
       '#F0F0F0', paddingBottom: '9em', textAlign:'center'}}>
         <SearchBar />
         <Link to="/"><Button
-              style={{marginTop: mobile ? '1em': '2em', 
-              marginBottom: mobile ? '1em' : '2em',
+              style={{marginTop: isMobile ? '1em': '2em', 
+              marginBottom: isMobile ? '1em' : '2em',
                   fontFamily: 'Inconsolata'}} primary size='massive'>
               Nothing to see here!
               <Icon corner={'top right'} name='home'/>

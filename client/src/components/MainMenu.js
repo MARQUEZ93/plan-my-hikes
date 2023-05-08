@@ -10,7 +10,7 @@ function MainMenu({isMobile=false}){
     if (isMobile) {
         return (
             <Menu widths='1' borderless pointing size='large'>
-                <Link to="/"><Menu.Item as='a' style={{margin:'auto'}}>
+                <Link to="/"><Menu.Item style={{margin:'auto'}}>
                     <Image size='small' src={logo} />
                 </Menu.Item></Link>
             </Menu>
