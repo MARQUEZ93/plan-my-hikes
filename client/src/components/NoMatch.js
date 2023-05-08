@@ -10,7 +10,7 @@ import SearchBar from './SearchBar';
 function NoMatch({isMobile = false}) {
     return ( <Container text style={{backgroundColor: 
       '#F0F0F0', paddingBottom: '9em', textAlign:'center'}}>
-        <SearchBar />
+        <SearchBar isMobile={isMobile}/>
         <Link to="/"><Button
               style={{marginTop: isMobile ? '1em': '2em', 
               marginBottom: isMobile ? '1em' : '2em',
