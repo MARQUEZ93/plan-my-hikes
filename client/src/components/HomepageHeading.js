@@ -18,8 +18,8 @@ const HomepageHeading = ({ isMobile=false }) => {
                   marginTop: false ? '0.8em' : '1em',
                 }}
             />
-            <SearchHikes isMobile/>
-            <RandomPark isMobile />
+            <SearchHikes isMobile={isMobile}/>
+            <RandomPark isMobile={isMobile} />
         </Container>
     );
 };

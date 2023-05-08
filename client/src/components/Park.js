@@ -62,7 +62,7 @@ function Park({isMobile=false}) {
 
     return (
         <Container style={{backgroundColor: 
-            '#F0F0F0', paddingBottom: '7em',
+            '#F0F0F0', paddingBottom: '6em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
                 <SearchBar />
                 <Header
@@ -81,7 +81,7 @@ function Park({isMobile=false}) {
                     style={{ margin: 'auto', borderRadius: '3em', 
                         marginBottom: '2em'
                     }}
-                    size= {isMobile ? 'medium' : 'large'}
+                    size= {isMobile ? 'small' : 'large'}
                     src={`${apiHost}/images/${park.route}.jpeg`} />
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
