@@ -46,10 +46,11 @@ function ParkSearchBar() {
       <Grid textAlign='center'>
         <Grid.Column textAlign='center'>
           <Search
-            size={'mini'}
-            style={{textAlign: 'center', margin: 'auto'}}
-            input={{ fluid: true }}
-            placeholder="Search for another park..."
+            fluid
+            size={'small'}
+            // style={{textAlign: 'center', margin: 'auto'}}
+            // input={{ fluid: true }}
+            placeholder="Search for a park..."
             value={value}
             onSearchChange={handleSearchChange}
             onResultSelect={(ev, data) => {

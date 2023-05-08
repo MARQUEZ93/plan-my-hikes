@@ -42,7 +42,7 @@ function SearchHikes({isMobile = false, size = 'massive'}) {
     return <Navigate to={`/parks/${state.route}`} />;
   }
   return (
-    <Grid textAlign='center'>
+    <Grid textAlign='center' style={{paddingTop: '1em', paddingBottom: '1em'}}>
       <Grid.Column>
         <Search
           fluid
@@ -55,7 +55,7 @@ function SearchHikes({isMobile = false, size = 'massive'}) {
           onSearchChange={handleSearchChange}
           results={results}
           value={value}
-          size={size}
+          size={isMobile ? 'normal' : 'massive'}
         />
       </Grid.Column>
     </Grid>

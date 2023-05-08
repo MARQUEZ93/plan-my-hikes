@@ -12,10 +12,10 @@ const HomepageHeading = ({ isMobile=false }) => {
                 inverted
                 style={{
                   color: '#1b1c1d',
-                  fontSize: isMobile ? '2.5em' : '3em',
+                  fontSize: isMobile ? '2em' : '3em',
                   fontWeight: 'normal',
-                  marginBottom: isMobile ?  '0.4em' : '.5em',
-                  marginTop: isMobile ? '0.8em' : '1em',
+                  marginBottom: '.5em',
+                  marginTop: isMobile ? '1em' : '1em',
                 }}
             />
             <SearchHikes isMobile={isMobile}/>
