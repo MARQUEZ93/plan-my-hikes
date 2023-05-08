@@ -8,7 +8,7 @@ import Questions from './Questions';
 
 const options = [
     { key: '1', text: '7 Day Itinerary', value: 'schedule'},
-    { key: '2', text: "Can't Miss Experience", value: 'best' },
+    { key: '2', text: "Best Experience", value: 'best' },
     { key: '3', text: 'Hidden Gem', value: 'hidden_gem' },
     { key: '4', text: 'Camping', value: 'camping' },
     { key: '5', text: 'Busy Season', value: 'busy' },
@@ -59,10 +59,6 @@ function Park({isMobile=false}) {
     useEffect(() => fetchParkData(), [name]);
     
     if (!park){return (<div>Loading...</div>);}
-    let usePre = false;
-    if (selected.value === 'schedule' || selected.value === 'tips'){
-        usePre = true;
-    }
 
     return (
         <Container style={{backgroundColor: 
@@ -110,11 +106,9 @@ function Park({isMobile=false}) {
                     />
                     <Grid columns={1}>
                         <Grid.Column>
-                            {
-                                usePre ? (<Segment size={'large'}>
+                            <Segment size={'large'}>
                                 <pre style={{ whiteSpace: 'pre-wrap' }}>{park[selected.value]}</pre>
-                            </Segment>) : <Segment size={'large'} content={park[selected.value]}></Segment>
-                            }
+                            </Segment>
                         </Grid.Column>
                 </Grid>
                 </Container>

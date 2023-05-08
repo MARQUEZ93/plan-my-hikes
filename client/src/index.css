@@ -2,7 +2,7 @@
   font-family: 'Inconsolata';
 }
 /* Footer Header(s) */
-.ui, .inverted, .header {
+.ui, .inverted, .header, pre {
   font-family: 'Inconsolata' !important;
 }
 body {
