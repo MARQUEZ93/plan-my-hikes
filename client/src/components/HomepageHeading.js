@@ -5,10 +5,10 @@ import RandomPark from './RandomPark';
 
 const HomepageHeading = ({ isMobile=false }) => {
     return (
-        <Container text style={{paddingBottom: '7em', textAlign:'center', paddingTop: '2em'}}>
+        <Container text style={{paddingBottom: '8em', textAlign:'center', paddingTop: '2em'}}>
             <Header
                 as='h1'
-                content='Get hiking advice from Chat GPT!'
+                content='Plan your hike with ChatGPT!'
                 inverted
                 style={{
                   color: '#1b1c1d',

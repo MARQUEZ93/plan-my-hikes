@@ -28,12 +28,12 @@ Deploy occurs on every merged pull request on the main branch. I send my zipped 
 
 ##### SSH onto EC2 instance
 
-ssh - ./Path/To/EC2/SSH/Key/Pair ec2-user@{Your_EC2_Public_IPv4_DNS_Here}
+`ssh - ./Path/To/EC2/SSH/Key/Pair ec2-user@{Your_EC2_Public_IPv4_DNS_Here}`
 
 ##### Drop DB
 
-docker exec -it {backend_container_name_here} node seed/drop.js
+`docker exec -it {backend_container_name_here} node seed/drop.js`
 
 ##### Seed DB (reads from ./data/json/parks.json file that contains saved Chat GPT responses)
 
-docker exec -it {backend_container_name_here} node seed/seed.js
+`docker exec -it {backend_container_name_here} node seed/seed.js`
