@@ -10,23 +10,23 @@
 
 `cd template`
 
-This project was used w/ Node v16.13.2 (https://www.freecodecamp.org/news/how-to-update-node-and-npm-to-the-latest-version/)
+This project was used w/ Node v16.13.2
 
 Generate an OpenAI API Key: https://platform.openai.com/account/api-keys
 
-Set your api key in the `myKey.js` file
+Set your api key in the `./myKey.js` file
 
-##### Save Results to CSV
+### Save Results to CSV
 
 Alter the list of prompts to ask Chat GPT whatever you want.
 
-`node toCSV.js` to save results to a data.csv file & corresponding prompts to a prompts.csv file
+`node toCSV.js` to save results to a ./data.csv file & corresponding prompts to a ./prompts.csv file
 
-##### Save Results to JSON
+### Save Results to JSON
 
-`node toJSON.js` to save results to a data.csv file & corresponding prompts to a prompts.csv file. If you altered the key names (for example, you changed the  best, hidden_gem or crowded keys, you will have to make those changes in the toPostgres.js file)
+`node toJSON.js` to save results to a data.csv file & corresponding prompts to a prompts.csv file. If you altered the key names (for example, you changed the  best, hidden_gem or crowded keys, you will have to make those changes in the ./toPostgres.js file)
 
-##### Save JSON Results to Postgres (Must save results to JSON first^)
+### Save JSON Results to Postgres (Must save results to JSON first)
 
 `node toPostgres.js` to save results to a Postgres database. You will have to run the command first to create your Postgres table. 
 Then read the instructions in the file to uncomment code that will seed the results from the ./data.json file to your newly created table. Don't forget to change column names etc. if you changed the keys in the ./toJSON.js file. The JSON file is especially usefully if you want to seed this data on production. 

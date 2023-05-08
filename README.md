@@ -10,19 +10,16 @@ I have been using Chat GPT when planning logistics for hiking national parks. Si
 
 I wrote [documentation](backend/template/README.md) to query OpenAI & save results to JSON, CSV, and Postgres DB. The model I queried was [Chat GPT 3.5](https://platform.openai.com/docs/models/gpt-3-5)
 
-### Tech Stack + Deployment
+### Deployment
 
-##### GitHub Actions
+#### GitHub Actions + AWS Elastic Beanstalk + Docker
 
-##### AWS Elastic Beanstalk
+Deploy occurs on every merged pull request on the main branch. I send my zipped docker-compose.yml file to AWS & it pulls down my public Docker images. 
 
-##### Nginx
+#### Nginx
+1) I added a Nginx server to my React Frontend Container. This listens on port 3000 & serves production assets from npm run build. 
 
-##### Docker
-
-##### React + Mobile UI
-
-##### Postgres + Express
+2) I forced HTTPS over HTTP in my default.conf 
 
 ### Commands
 
