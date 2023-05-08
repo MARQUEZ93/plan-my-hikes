@@ -47,7 +47,7 @@ function ParkSearchBar() {
         <Grid.Column textAlign='center'>
           <Search
             fluid
-            size={'small'}
+            size={'mini'}
             // style={{textAlign: 'center', margin: 'auto'}}
             // input={{ fluid: true }}
             placeholder="Search for a park..."

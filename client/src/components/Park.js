@@ -87,7 +87,7 @@ function Park({isMobile=false}) {
                 <Questions handleButtonClick={handleButtonClick} 
                     selected={selected} />
                 <Container style={{ backgroundColor: 
-            '#F0F0F0', marginTop: isMobile ? '.5em' : '2em', paddingTop: isMobile ? '1.25em': '2em',
+            '#F0F0F0', marginTop: isMobile ? '.5em' : '2em', paddingTop: isMobile ? '1.5em': '2em',
             textAlign:'center', display: 'flex', flexDirection: 'column'}}>
                     <Header
                         as='h3'

@@ -55,7 +55,7 @@ function SearchHikes({isMobile = false, size = 'massive'}) {
           onSearchChange={handleSearchChange}
           results={results}
           value={value}
-          size={isMobile ? 'normal' : 'massive'}
+          size={isMobile ? 'large' : 'massive'}
         />
       </Grid.Column>
     </Grid>

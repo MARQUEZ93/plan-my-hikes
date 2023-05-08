@@ -62,7 +62,7 @@ const Questions = ({handleButtonClick, selected}) => {
         );
     } else {
         return (<>
-                    <Button.Group widths='3'>
+                    <Button.Group size={'mini'} widths='3'>
                             {options.slice(1,4).map((option) => (
                                 <Button
                                     disabled={selected.value === option.value}
@@ -74,7 +74,7 @@ const Questions = ({handleButtonClick, selected}) => {
                             ))}
                         </Button.Group>
                         <Divider fitted/>
-                        <Button.Group widths='3'>
+                        <Button.Group size={'mini'} widths='3'>
                             {options.slice(4,7).map((option) => (
                                 <Button
                                     disabled={selected.value === option.value}
@@ -86,7 +86,7 @@ const Questions = ({handleButtonClick, selected}) => {
                             ))}
                         </Button.Group>
                         <Divider fitted />
-                        <Button.Group fluid widths='1'>
+                        <Button.Group size={'mini'} widths='1'>
                             <Button
                                 disabled={selected.value === options[0].value}
                                 key={options[0].key}
