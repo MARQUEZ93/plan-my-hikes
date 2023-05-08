@@ -5,7 +5,7 @@ import RandomPark from './RandomPark';
 
 const HomepageHeading = ({ isMobile=false }) => {
     return (
-        <Container text style={{paddingBottom: isMobile ? '8em' : '4em', textAlign:'center', paddingTop: '2em'}}>
+        <Container text style={{paddingBottom: '8em', textAlign:'center', paddingTop: '2em'}}>
             <Header
                 as='h1'
                 content='Plan your hike with ChatGPT!'
