@@ -1,0 +1,1 @@
+module.exports = "Your Open AI API key here";

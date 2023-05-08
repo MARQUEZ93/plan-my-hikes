@@ -35,7 +35,6 @@ app.get('/api/parks/:route', async (req, res) => {
       res.status(404).send('Park not found');
     } else {
       const park = result.rows[0];
-      console.log(park);
       res.send(park);
     }
   });

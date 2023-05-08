@@ -43,7 +43,7 @@ services:
     depends_on:
       - backend
     environment:
-      API_HOST: /api
+      REACT_APP_API_HOST: /api
       WDS_SOCKET_PORT: 0
     volumes:
       - /app/node_modules
