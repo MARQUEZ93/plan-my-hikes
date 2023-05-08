@@ -22,16 +22,16 @@ function App() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  
+
   return (
     <BrowserRouter >
       <SiteHeader isMobile={isMobile} />
       <Routes style={{backgroundColor: '#F0F0F0'}}>
-          <Route path="/" element={<HomepageHeading isMobile/>} />
-          <Route path="/parks/:name" element={<Park isMobile/>} />
-          <Route path="*" element={<NoMatch isMobile/>} />
+          <Route path="/" element={<HomepageHeading isMobile={isMobile}/>} />
+          <Route path="/parks/:name" element={<Park isMobile={isMobile}/>} />
+          <Route path="*" element={<NoMatch isMobile={isMobile}/>} />
       </Routes>
-      <Footer isMobile />
+      <Footer isMobile={isMobile} />
     </BrowserRouter>
   );
 };
