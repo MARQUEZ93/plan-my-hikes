@@ -14,16 +14,20 @@ I wrote [documentation](backend/template/README.md) to query OpenAI & save resul
 
 #### GitHub Actions + AWS Elastic Beanstalk + Docker
 
-Deploy occurs on every merged pull request on the main branch. I send my zipped docker-compose.yml file to AWS & it pulls down my public Docker images. 
+Deploy occurs on every merged pull request on the main branch. I send my zipped docker-compose.yml file to AWS & it builds my public Docker images. The `docker-compose.yml` file is set as the `deployment_package` in my `./.github/worfklows/main.yml`. This is used by the [Beanstalk Deploy action](https://github.com/einaregilsson/beanstalk-deploy). 
 
-#### Nginx
+#### Nginx 
 1) I added a Nginx server to my React Frontend Container. This listens on port 3000 & serves production assets from npm run build. 
 
 2) I forced HTTPS over HTTP in my default.conf for my application Nginx server.
 
+#### React + Express + PostgresDB
+
+I implemented [Semantic React UI](https://react.semantic-ui.com/) on client side + an Express/PostgresDB API.
+
 ### Commands
 
-##### Build multi-container application locally
+##### Build multi-container application locally (application will be available locally on http://localhost:81)
 `docker compose -f docker-compose-dev.yml up --build`
 
 ##### SSH onto EC2 instance

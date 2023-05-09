@@ -20,7 +20,7 @@ Set your api key in the `./myKey.js` file
 
 Alter the list of prompts to ask Chat GPT whatever you want.
 
-`node toCSV.js` to save results to a ./data.csv file & corresponding prompts to a ./prompts.csv file
+`node toCSV.js` to save results to a `./data.csv` file & corresponding prompts to a `./prompts.csv` file
 
 ### Save Results to JSON
 
@@ -29,5 +29,5 @@ Alter the list of prompts to ask Chat GPT whatever you want.
 ### Save JSON Results to Postgres (Must save results to JSON first)
 
 `node toPostgres.js` to save results to a Postgres database. You will have to run the command twice. The first time to create your Postgres table. 
-Then read the instructions in the file to uncomment code that will seed the results from the ./data.json file to your newly created table. Then run the command a second time. Don't forget to change column names etc if you changed the keys in the ./toJSON.js file. The JSON file is especially usefully if you want to seed this data on production. 
+Then read the instructions in the file to uncomment code that will seed the results from the `./data.json` file to your newly created table. Then run the command a second time. Don't forget to change column names etc if you changed the keys in the `./toJSON.js` file. The JSON file is especially usefully if you want to seed this data on production. 
 
