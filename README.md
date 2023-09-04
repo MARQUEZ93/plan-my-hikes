@@ -1,4 +1,4 @@
-# [Plan My Hikes](https://www.planmyhikes.com)
+# [Plan My Hikes](http://www.planmyhikes.com)
 
 <p align="center"><img src="https://i.imgur.com/Im7naBI.png" width="800px"/></p>
 
@@ -21,7 +21,7 @@ Deploy occurs on every merged pull request on the main branch. I send my zipped 
 
 2) I forced HTTPS over HTTP in my default.conf for my application Nginx server.
 
-#### React + Express + PostgresDB
+#### React + Express + PostgresDB (Update: I removed Postgres due to AWS RDS costs)
 
 I implemented [Semantic React UI](https://react.semantic-ui.com/) on client side + an Express/PostgresDB API.
 
