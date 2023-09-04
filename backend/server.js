@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express(); 
 const port = process.env.PORT || 5000; 
+const parks = require ('./new_parks.json');
 
 const cors = require('cors');
 
@@ -12,7 +13,6 @@ app.listen(port, () => {
 
 app.get('/api/parks/:route', async (req, res) => {
   const route = req.params.route;
-  const parks = require ('./data/json/parks.json');
   const park = parks[route];
   if (park) {
     res.send(park);
