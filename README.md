@@ -1,5 +1,7 @@
 # [Plan My Hikes](http://www.planmyhikes.com)
 
+<p align="center">Server taken down due to cost</p>
+
 <p align="center"><img src="https://i.imgur.com/Im7naBI.png" width="800px"/></p>
 
 ### About
